@@ -1,10 +1,11 @@
 # Mixins
 
-Mixins allow you to change Minecraft code. This is massively powerful, but you need to be very careful when using them, especially when considering to work together with other mods.
+Mixins allow you to change Minecraft code. This is massively powerful, but you need to be very careful when using them, especially when considering if you want to integrate well with other mods.
 
 !!! info
     The [MinecraftDev](https://mcdev.io/) plugin is pretty much non negotiable when coding Mixins. It enables auto completion, shows errors when your mixins are wrong in your IDE and allows you to directly navigate to the code you are changing.
-    It also has some other functions that allow for easier Minecraft development, but most of the functionality is aimed at higher versions.
+
+    It also has some other functions that allow for easier Minecraft development, but most of that functionality is aimed at higher Minecraft versions.
 
 > Please forgive the the nonsensical examples. I try to make the examples as simple as possible. [Check](https://github.com/NotEnoughUpdates/NotEnoughUpdates/tree/master/src/main/java/io/github/moulberry/notenoughupdates/mixins) [out](https://github.com/hannibal002/SkyHanni/tree/beta/src/main/java/at/hannibal2/skyhanni/mixins/transformers) [some](https://github.com/Skytils/SkytilsMod/tree/1.x/src/main/java/gg/skytils/skytilsmod/mixins/transformers) [open](https://github.com/inglettronald/DulkirMod/tree/master/src/main/java/dulkirmod/mixins) source mods to check out some real world mixins.
 
@@ -47,7 +48,7 @@ public void someMixinMethod_mymodid() {}
 public void someMixinMethod$mymodid() {}
 ```
 
-There are some exceptions for `@Inject`s, but in general it doesn't hurt to just add the postfix.
+There are some exceptions for `:::java @Inject`s, but in general it doesn't hurt to just add the postfix.
 
 ### Non destructive mixins
 
@@ -57,11 +58,11 @@ I.e. if you want a mixin to color mobs, and your mod decides not to color a mob,
 
 There are some general ground rules for achieving this behaviour: 
 
- - Only use `cir.setReturnValue()` or `ci.cancel()` if your mod decides to act on something. The default action should be to pass through to the next mixin or vanilla by doing nothing.
- - Don't use `@Redirect`. Only one mixin can ever use a `@Redirect` on the same call. Only one redirect will ever work, even if your mod does nothing different with a given method call.
- - Don't use `@Overwrite` (and don't overwrite without the annotation either, lol). Only one overwrite will ever work, even if your mod does nothing different with a given method call.
+ - Only use `:::java cir.setReturnValue()` or `:::java ci.cancel()` if your mod decides to act on something. The default action should be to pass through to the next mixin or vanilla by doing nothing.
+ - Don't use `:::java @Redirect`. Only one mixin can ever use a `:::java @Redirect` on the same call. Only one redirect will ever work, even if your mod does nothing different with a given method call.
+ - Don't use `:::java @Overwrite` (and don't overwrite without the annotation either, lol). Only one overwrite will ever work, even if your mod does nothing different with a given method call.
 
-Of course you will have to break those rules from time to time. But before you do, think twice if you need to. And if you do, maybe consider exposing some sort of API for other mods to hook into your code?
+Of course you will have to break those rules from time to time. But before you do, think twice if you *really* need to. And if you do, maybe consider exposing some sort of API for other mods to hook into your code?
 
 ## Troubleshooting
 

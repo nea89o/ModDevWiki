@@ -34,9 +34,9 @@ public class MyGuiScreen extends GuiScreen {
 
 `drawScreen` is called every frame and is used to render things onto the screen. Note that you *first* call `drawDefaultBackground()` (which tints the background dark) and then call `super.drawScreen()` (which renders widgets on your screen).
 
-`keyTyped` is called whenever a key is pressed. You can check `typedChar` to see the character they typed, or you can check `keyCode` if you want to know the key they pressed. For example a key like <kbd>F7</kbd> would not have a `typedChar`, but would have the `keyCode == Keyboard.KEY_F7`. We also call `super.keyTyped()` here so that the standard <kbd>Escape</kbd> to close works.
+`keyTyped` is called whenever a key is pressed. You can check `typedChar` to see the character they typed, or you can check `keyCode` if you want to know the key they pressed. For example a key like ++f7++ would not have a `typedChar`, but would have the `keyCode == Keyboard.KEY_F7`. We also call `super.keyTyped()` here so that the standard ++esc++ to close works.
 
-`mouseClicked` is called whenever the mouse is clicked in your screen. The `mouseButton` sadly doesn't have a vanilla class with namese for them like `Keyboard`, but you can use these constants instead: 
+`mouseClicked` is called whenever the mouse is clicked in your screen. The `mouseButton` sadly doesn't have a vanilla class with names for them like `Keyboard`, but you can use these constants instead: 
 
 ```java
 public static final int MOUSE_LEFT = 0;
@@ -135,7 +135,7 @@ public void drawScreen(int mouseX, int mouseY, float partialTicks) {
 
 Images in Minecraft are rendered from the assets folder. In your project, you should have a folder called `src/main/resources`. In that folder you create two more folders called `assets/<yourmodidhere>/`. That is your asset root. In here you can put any file you want and load it into Minecraft. You probably want your textures to be in a folder like `textures/gui` *inside* your asset root however (`src/main/resources/assets/<yourmodidhere>/textures/gui/mytexture.png`).
 
-For images you probably want to use png files.
+For images you probably want to use png files, since Minecraft supports these out of the box, unlike most other image formats.
 
 For this tutorial you can use [this background](img/background.png).
 
@@ -153,14 +153,10 @@ public void drawScreen(int mouseX, int mouseY, float partialTicks) {
 
     // Render from your texture.
     drawModalRectWithCustomSizedTexture(
-            // The first two arguments are the position on the screen
-            width / 2 - 100, height / 2 - 20,
-            // The next arguments are the starting u and v
-            0, 0,
-            // The next arguments are the size on the screen
-            200, 40,
-            // The last two arguments are the size of the texture
-            200, 40
+            width / 2 - 100, height / 2 - 20, // (1)!
+            0, 0,  // (2)!
+            200, 40, // (3)!
+            200, 40 // (4)!
     );
 
     FontRenderer fr = minecraft.fontRendererObj;
@@ -177,6 +173,11 @@ public void drawScreen(int mouseX, int mouseY, float partialTicks) {
     fr.drawString(text, width / 2 + 95 - textWidth, height / 2 + 5, 0xFF000000);
 }
 ```
+
+1. This is the top left position of where your texture should be rendered.
+2. This is the starting u and v of your texture. If you don't have any custom [UVs](#uvs), you can just use `(0, 0)`
+3. This is the size on the screen of what you want to render. If you don't use custom UVs, this needs to match your texture size. If you want to scale your texture, check out [Matrix Transformations](#transformations) or `drawScaledCustomSizeModalRect` (which is a bit more complicated).
+4. This is the size of your texture, you need to hardcode this here, since texture packs can upload lower and higher resolution versions of your texture, and Minecraft needs to figure out how to scale the texture.
 
 #### UVs
 
@@ -204,13 +205,13 @@ float u = 16 / 64; // start at x pixel coordinate 16 with a 64 wide image
 
 #### Translations
 
-Translations move things around. `translate(10, 0, 0)` would cause all future render calls to instead render 10 pixels to the right. You may notice that `translate` takes 3 arguments. This is because the `z` direction is also translated. This is useful in 3D, but can be used in 2D GUI rendering as well to move things in front of other things. In a GUI a greater z value means that something renders in front of something that has a lower z.
+Translations move things around. `:::java translate(10, 0, 0)` would cause all future render calls to instead render 10 pixels to the right. You may notice that `translate` takes 3 arguments. This is because the `z` direction is also translated. This is useful in 3D, but can be used in 2D GUI rendering as well to move things in front of other things. In a GUI a greater z value means that something renders in front of something that has a lower z.
 
 You can use this to render a tooltip for example. By default later rendering calls in your method would render on top of the tooltip, but if you first translate to a high z value and then back to normal after your tooltip rendering, the other method calls won't render on top of the tooltip.
 
 #### Scaling
 
-Scalings, well, *scale* things. This means a `scale(2, 2, 1)` call would render everything after twice as big. But you need to be careful. Everything is twice as big, including the coordinates at which you render.
+Scalings, well, *scale* things. This means a `:::java scale(2, 2, 1)` call would render everything after twice as big. But you need to be careful. Everything is twice as big, including the coordinates at which you render.
 
 ```java
 GlStateManager.scale(2, 2, 1);
@@ -218,7 +219,7 @@ GlStateManager.scale(2, 2, 1);
 fontRenderer.drawString("Hello, World!", 10, 10, -1);
 ```
 
-This would normally render at `(10, 10)`. But since everything is scaled two times, it actually renders at `(20, 20)` and twice as big. To circumvent that you can instead first translate, then scale, and then render at `(0, 0)`.
+This would normally render at `:::java (10, 10)`. But since everything is scaled two times, it actually renders at `:::java (20, 20)` and twice as big. To circumvent that you can instead first translate, then scale, and then render at `:::java (0, 0)`.
 
 ```java
 GlStateManager.translate(10, 10, 0);
@@ -230,7 +231,7 @@ fontRenderer.drawString("Hello, World!", 0, 0, -1);
 Alternatively you can do the math and divide all coordinates by your current scale factor.
 
 !!! warning
-    Please always use `1` as a scale factor for the z direction. If you do not do this, a lot of rendering calls will break and parts of your GUI might just not render at all or in the wrong order. You can use other non-zero scale factors for z like `2` sometimes, but in almost all cases that is the **wrong behaviour** and you should instead use the scale factor `1`.
+    Please always use `:::java 1` as a scale factor for the z direction. If you do not do this, a lot of rendering calls will break and parts of your GUI might just not render at all or in the wrong order. You can use other non-zero scale factors for z like `:::java 2` sometimes, but in almost all cases that is the **wrong behaviour** and you should instead use the scale factor `:::java 1`.
 
 #### Stack Manipulation
 
@@ -271,21 +272,21 @@ In addition to transformations you can also change "attributes" about the render
 
 #### Stack Manipulation
 
-Like the matrix stack for  transformations there is also an "attribute stack" for attributes. That one is severly broken in Minecraft, however. There is a bug in `GlStateManager` that means that if you set an attribute using `GlStateManager` inside of a `pushAttrib`-`popAttrib` block, you sometimes cannot set that attribute again. This means when inside of such a block you cannot call Minecrafts wrappers in `GlStateManager` and you need to instead call OpenGL directly. I recommend against using this however, since vanilla code you call might still use `GlStateManager`, therefore breaking attributes until the next frame. Use these two methods very carefully if at all.
+Like the matrix stack for  transformations there is also an "attribute stack" for attributes. That one is severly broken in Minecraft, however. There is a bug in `GlStateManager` that means that if you set an attribute using `GlStateManager` inside of a `pushAttrib`-`popAttrib` block, you sometimes cannot set that attribute again. This means when inside of such a block you cannot call Minecrafts wrappers in `GlStateManager` and you need to instead call OpenGL directly. I recommend against using this however, since vanilla code you call might still use `GlStateManager`, therefore breaking attributes until the next frame. Use these two methods very carefully, if at all.
 
 #### Color
 
-`GlStateManager.color` is probably the easiest example of an attribute. You can use it to tint all your future render calls, including textures and text. You probably already set a color using `fr.drawString`, since that has a color argument, which in turn just calls `GlStateManager.color` after several layers of abstractions. If you want everything back to normal, just set the color to `color(1, 1, 1, 1)`. 
+`:::java GlStateManager.color` is probably the easiest example of an attribute. You can use it to tint all your future render calls, including textures and text. You probably already set a color using `:::java fr.drawString`, since that has a color argument, which in turn just calls `:::java GlStateManager.color` after several layers of abstractions. If you want everything back to normal, just set the color to `:::java color(1, 1, 1, 1)`. 
 
 #### Depth
 
 `enableDepth` and `disableDepth` turn on and off depth testing. Meaning that the z value ignored and things with a high z value might render behind things with a low z value. Only the render order matters now, instead of the z value.
 
-On top of that you can use `depthFunc` along with `GL11.GL_LESS`, `GL11.GL_LEQUAL`, `GL11.GL_GREATER`, `GL_ALWAYS` (which is equivalent to `disableDepth`) etc, to decide in which direction the depth test functions.
+On top of that you can use `depthFunc` along with `:::java GL11.GL_LESS`, `:::java GL11.GL_LEQUAL`, `:::java GL11.GL_GREATER`, `:::java GL_ALWAYS` (which is equivalent to `disableDepth`) etc, to decide in which direction the depth test functions.
 
 #### Blending
 
-Blending specifies how transparent images render on top of each other. Again you can `enableBlend` and `disableBlend`, as well as specify the function to use to blend two images. Again, you can use values from `GL11` like `GL11.GL_ONE_MINUS_SRC_ALPHA`, `GL11.GL_ONE_MINUS_DST_ALPHA`, `GL11.GL_SRC_ALPHA` and so on with `blendFunc` or `tryBlendFuncSeparate`.
+Blending specifies how transparent images render on top of each other. Again you can `enableBlend` and `disableBlend`, as well as specify the function to use to blend two images. Again, you can use values from `:::java GL11` like `:::java GL11.GL_ONE_MINUS_SRC_ALPHA`, `:::java GL11.GL_ONE_MINUS_DST_ALPHA`, `:::java GL11.GL_SRC_ALPHA` and so on with `blendFunc` or `tryBlendFuncSeparate`.
 
 #### And many more
 

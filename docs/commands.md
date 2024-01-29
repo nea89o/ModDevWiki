@@ -11,36 +11,51 @@ public class CrashCommand extends CommandBase {
 
     @Override
     public String getCommandName() {
-        return "crashme";
+        return "crashme"; // (1)!
     }
 
     @Override
     public String getCommandUsage(ICommandSender sender) {
-        return "";
+        return ""; // (2)!
     }
 
     @Override
     public void processCommand(ICommandSender sender, String[] args) throws CommandException {
-        throw new RuntimeException("Not yet implemented!");
+        throw new RuntimeException("Not yet implemented!"); // (3)!
     }
 
     @Override
     public boolean canCommandSenderUseCommand(ICommandSender sender) {
-        return true;
+        return true; // (4)!
     }
 
+    @Override
+    public List<String> getCommandAliases() {
+        return Arrays.asList("dontcrashme"); // (5)!
+    }
 }
 ```
 
-I already implemented three methods into the command.
+1. This is the name of your command. You can call your command in chat with `/crashme`. You should only use numbers and letters for this name, since a lot of other characters make it impossible to call your command.
+2. This can be left empty. By default this is used by the vanilla `/help` command. But since we are on SkyBlock, where Hypixel uses a custom help menu that does not show client commands, there isn't really any point in filling that one out.
+3. We will implement the actual code in the next section
+4. This method simply allows anyone to call this command. Since this is a client command, "anyone" just means "the local player".
+5. The `getCommandAliases` method allows you to specify additional names that your command can be called by. You can just not implement this method if you want to only use the name returned by `getCommandName`.
 
 !!! warning
     When writing a client command you will need to override `canCommandSenderUseCommand`. By default this method does not generate, but without it you will get a `You do not have permission to use this command` error (since you by default do not have any permissions on a server). Just always return `:::java true`, since the command is client side only anyway.
 
+## Registering your command
 
-First the method `getCommandName`, which returns the name of your command. The name is what you use in chat to run the command. The command name should be just numbers and letters (and maybe dashes, if you want). In chat you will need to run `/crashme` to run this command (the `/` gets added to the name automatically).
+After all this work your command still just will not run. This is because right now you just have a random Java class Forge knows nothing about. You need to register your command. You typically do this in the `FMLInitializationEvent`:
 
-The second method is `getCommandUsage`. You need to override it because every commands needs to have a usage, but for most SkyBlock mods that usage doesn't matter — it only gets displayed in the `/help` menu, and Hypixel does not show client commands in it's help menu.
+
+```java
+@Mod.EventHandler
+public void init(FMLInitializationEvent event) {
+    ClientCommandHandler.instance.registerCommand(new CrashCommand());
+}
+```
 
 ## Running your command
 
@@ -66,7 +81,7 @@ But, this way of crashing the game might be a bit too easy to accidentally run. 
 ```java
 @Override
 public void processCommand(ICommandSender sender, String[] args) throws CommandException {
-    // Make sure to check the array length before checking an argument
+    // Be sure to check the array length before checking an argument
     if (args.length == 1 && args[0].equals("confirm")) {
         LogManager.getLogger("CrashCommand").info("Intentionally crashing the Game!");
         FMLCommonHandler.instance().exitJava(1, false);
@@ -118,20 +133,39 @@ Minecraft uses `IChatComponent`s in chat (and a few other places). You can make 
     }
     ```
 
-    See [Events](/development/events) for more info on how to set up event handlers.
+    See [Events](events.md) for more info on how to set up event handlers.
 
-## Registering your command
 
-After all this work your command still just will not run. This is because the final step of client commands is still missing. You need to register your command. You typically do this in the `FMLInitializationEvent`:
+## Tab Completion
+
+Minecraft allows you to press tab to auto complete arguments for commands. Your command will already be tab completable, but in order for this to also work with the arguments of your command, you need to override `addTabCompletionOptions`:
 
 
 ```java
-@Mod.EventHandler
-public void init(FMLInitializationEvent event) {
-    ClientCommandHandler.instance.registerCommand(new CrashCommand());
+@Override
+public void processCommand(ICommandSender sender, String[] args) throws CommandException {
+    if (args.length == 0) {
+        sender.addChatMessage(new ChatComponentText("§cPlease use an argument"));
+    } else if (args[0].equals("weather")) {
+        sender.addChatMessage(new ChatComponentText("§bCurrent Weather: " +
+                (Minecraft.getMinecraft().theWorld.isRaining() ? "§7Rainy!" : "§eSunny!")));
+    } else if (args[0].equals("coinflip")) {
+        sender.addChatMessage(new ChatComponentText("§bCoinflip: " +
+                (ThreadLocalRandom.current().nextBoolean() ? "§eHeads" : "§eTails")));
+    } else {
+        sender.addChatMessage(new ChatComponentText("§cUnknown subcommand"));
+    }
+}
+
+@Override
+public List<String> addTabCompletionOptions(ICommandSender sender, String[] args, BlockPos pos) {
+    if (args.length == 1) // (1)!
+        return getListOfStringsMatchingLastWord(args, "weather", "coinflip"); // (2)!
+    return Arrays.asList();
 }
 ```
 
-
+1. The args array contains all the arguments. The last argument is the one you should autocomplete. It contains the partial argument, or an empty string. Make sure to check the length of the array, so you know which argument you are autocompleting.
+2. The `getListOfStringsMatchingLastWord` function automatically filters your autocompletion results based on the options you give it. The first argument is the `args` array, the second argument is either a `:::java List<String>` or a vararg of `:::java String`s
 
 

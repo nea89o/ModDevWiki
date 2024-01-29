@@ -24,13 +24,13 @@ public interface AccessorMinecraft {
 }
 ```
 
-First, notice that we need to use an `interface`. Most mixins are `class`es. Accessors are the exception, since we don't want to actually put any code into the `Minecraft` class. Accessor mixins can also not be mixed with other mixin styles, but since you should have multiple mixins even for the same class for different things anyway, this shouldn't be an issue.
+First, notice that we need to use an `:::java interface`. Most mixins are `:::java class`es. Accessors are the exception, since we don't want to actually put any code into the `:::java Minecraft` class. Accessor mixins can also not be mixed with other mixin styles, but since you should have multiple mixins even for the same class for different things anyway, this shouldn't be an issue.
 
-Next we put the `@Mixin` annotation on our Accessor to let it known which class we want to inject into.
+Next we put the `:::java @Mixin` annotation on our Accessor to let it known which class we want to inject into.
 
-Then for a field we use the `@Accessor` annotation, with the name of the field we want to access. Please give all your mixin methods a `_mymodid` indicator, to avoid name collissions with other mods.
+Then for a field we use the `:::java @Accessor` annotation, with the name of the field we want to access. Please give all your mixin methods a `_mymodid` indicator, to avoid name collissions with other mods.
 
-For a setter, the method returns void and takes one argument of the type of the field you are targetting. For a getter, the method returns the type of the field you are targeting and takes no arguments.
+For a setter, the method returns `:::java void` and takes one argument of the type of the field you are targetting. For a getter, the method returns the type of the field you are targeting and takes no arguments.
 
 For an method invoker, you copy the method signature you want to call, but rename it to something unique with a `_mymodid` postfix.
 

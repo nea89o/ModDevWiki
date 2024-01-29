@@ -5,7 +5,7 @@ The next step up is injecting fields and methods into a class. This allows you t
 ```java
 @Mixin(EntityArmorStand.class)
 public class InjectCustomField {
-    Color colorOverride_mymodid;
+    Color colorOverride_mymodid = Color.RED;
 
     public void setColorOverride_mymodid(Color color) {
         colorOverride_mymodid = color;
@@ -17,13 +17,13 @@ public class InjectCustomField {
 }
 ```
 
-This mixin is a `class`, like all mixin (except for accessors) are. You can make the class abstract if you want. 
+This mixin is a `:::java class`, like all mixin (except for accessors) are. You can make the class abstract if you want. 
 
 First we add a new field (of course with modid postfix) into every armor stand.
 
 Then we also add a getter and a setter method for that field.
 
-Right now we run into a problem. We can't access mixin classes directly, so we cannot simply cast the `EntityArmorStand` into a `InjectCustomField`. Instead we create an interface (inside of our regular code, not inside of the mixin package) and implement that interface in our mixin class. You can also implement other interfaces this way, not just your own.
+Right now we run into a problem. We can't access mixin `:::java class`es directly, so we cannot simply cast the `EntityArmorStand` into a `InjectCustomField`. Instead we create an interface (inside of our regular code, not inside of the mixin package) and implement that interface in our mixin class. You can also implement other interfaces this way, not just your own.
 
 ```java
 // Inside our regular code. Not in the mixin package
@@ -48,3 +48,17 @@ public class InjectCustomField implement ColorFieldAccessor {
     }
 }
 ```
+
+Now we can just cast any instance of `EntityArmorStand` to `ColorFieldAccessor`:
+
+```java
+public static Color getColorOverrideForArmorStand(EntityArmorStand armorStand) {
+    return ((ColorFieldAccessor) armorStand).getColorOverride_mymodid();
+}
+```
+
+
+
+
+
+

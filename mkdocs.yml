@@ -1,4 +1,30 @@
 site_name: Legacy Modding Wiki by nea89
+site_url: https://moddev.nea.moe/
+site_description: |
+  My wiki for 1.8.9 Forge modding beginners and experts alike.
+repo_name: nea89o/ModDevWiki
+repo_url: https://github.com/nea89o/ModDevWiki
+edit_uri: blob/master/docs
+
+
+
+nav:
+  - index.md
+  - ide-setup.md
+  - events.md
+  - commands.md
+  - screens.md
+  - Mixins:
+    - mixins/index.md
+    - mixins/accessors.md
+    - mixins/adding-fields.md
+    - mixins/simple-injects.md
+
+
+validation:
+  omitted_files: warn
+  absolute_links: warn
+  unrecognized_links: warn
 
 theme:
   name: material
@@ -6,6 +32,36 @@ theme:
     - content.code.annotate
     - content.code.copy
     - content.tooltips
+    - navigation.top
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.instant.progress
+    - navigation.tracking
+    - navigation.indexes
+    - content.action.edit
+  icon:
+    repo: fontawesome/brands/git-alt
+  palette:
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+
+
+plugins:
+  - git-revision-date-localized:
+      enable_creation_date: true
+      fallback_to_build_date: true
+
 
 markdown_extensions:
   - abbr

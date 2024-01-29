@@ -3,7 +3,7 @@
 Creating a custom screen manually is quite a big effort. Instead you can consider using an existing GUI library:
 
  - [MoulConfig](https://notenoughupdates.org/MoulConfig/) is a config library with some features for custom GUIs based on NEUs GUIs.
- - [Elementa](https://github.com/EssentialGG/Elementa) is a gui library made by sk1er. It mainly targets Kotlin, an alternative programming language to Java, but can in theory also be used from Java.
+ - [Elementa](https://github.com/EssentialGG/Elementa) is a gui library made by Sk1er. It mainly targets Kotlin, an alternative programming language to Java, but can in theory also be used from Java.
  - [Vigilance](https://github.com/EssentialGG/Vigilance) is fully automated Elementa for config GUIs only.
  - [OneConfig](https://docs.polyfrost.org/oneconfig/) is a config library made by Polyfrost.
  - or just do it yourself. Writing a gui is not the easiest thing in modding, but nothing allows you more customization.
@@ -50,7 +50,7 @@ You can also always access the `width` and `height` fields to get the screen wid
 
 ## Adding buttons
 
-Vanilla has a system for buttons already built in, which i am using for a simple color selector:
+Vanilla has a system for buttons already built in, which I am using for a simple color selector:
 
 ```java
 int lastClickedButton = 0;
@@ -103,7 +103,7 @@ Instead of using built in buttons and basic rectangles, you can also render more
 
 ### Rendering text
 
-You can easily use Minecrafts built in font renderer to render any text you like.
+You can easily use Minecraft's built in font renderer to render any text you like.
 
 ```java
 @Override

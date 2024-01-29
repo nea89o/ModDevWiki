@@ -21,6 +21,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://moddev.nea.moe/inventories/</loc>
+         <lastmod>2024-01-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://moddev.nea.moe/screens/</loc>
          <lastmod>2024-01-29</lastmod>
          <changefreq>daily</changefreq>

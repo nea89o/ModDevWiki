@@ -1,0 +1,1096 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="My wiki for 1.8.9 Forge modding beginners and experts alike.
+">
+      
+      
+      
+        <link rel="canonical" href="https://moddev.nea.moe/inventories/">
+      
+      
+        <link rel="prev" href="../screens/">
+      
+      
+        <link rel="next" href="../vanilla/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.6">
+    
+    
+      
+        <title>Inspecting Inventories - Legacy Modding Wiki by nea89</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Inspecting Inventories - Legacy Modding Wiki by nea89" >
+      
+        <meta  property="og:description"  content="My wiki for 1.8.9 Forge modding beginners and experts alike.
+" >
+      
+        <meta  property="og:image"  content="https://moddev.nea.moe/assets/images/social/inventories.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://moddev.nea.moe/inventories/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Inspecting Inventories - Legacy Modding Wiki by nea89" >
+      
+        <meta  name="twitter:description"  content="My wiki for 1.8.9 Forge modding beginners and experts alike.
+" >
+      
+        <meta  name="twitter:image"  content="https://moddev.nea.moe/assets/images/social/inventories.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="lime" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#inspecting-inventories" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Legacy Modding Wiki by nea89" class="md-header__button md-logo" aria-label="Legacy Modding Wiki by nea89" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Legacy Modding Wiki by nea89
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Inspecting Inventories
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="lime" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="light-blue" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/nea89o/ModDevWiki" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    nea89o/ModDevWiki
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Legacy Modding Wiki by nea89" class="md-nav__button md-logo" aria-label="Legacy Modding Wiki by nea89" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Legacy Modding Wiki by nea89
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/nea89o/ModDevWiki" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    nea89o/ModDevWiki
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome to nea89s Modding Wiki
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ide-setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Setting up
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../events/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Events in Forge
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commands/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Creating your first command
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../screens/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Screens and You
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Inspecting Inventories
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Inspecting Inventories
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#getting-the-inventory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting the inventory
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accessing-items" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessing Items
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inside-of-items" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inside of Items
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Inside of Items">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#item-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Item APIs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nbt-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      NBT APIs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extraattributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      ExtraAttributes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#closing-out-the-guiopenevent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Closing out - The GuiOpenEvent
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vanilla/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Looking through Vanilla Code
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../mixins/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Mixins
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Mixins
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mixins/accessors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Accessor Mixins
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mixins/adding-fields/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adding new fields and methods
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mixins/simple-injects/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Simple Injects
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#getting-the-inventory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting the inventory
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accessing-items" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessing Items
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inside-of-items" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inside of Items
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Inside of Items">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#item-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Item APIs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nbt-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      NBT APIs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extraattributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      ExtraAttributes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#closing-out-the-guiopenevent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Closing out - The GuiOpenEvent
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/nea89o/ModDevWiki/blob/master/docs/inventories.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="inspecting-inventories">Inspecting Inventories<a class="headerlink" href="#inspecting-inventories" title="Permanent link">&para;</a></h1>
+<p>Whether you want to sum up item prices in a chest, highlight bazaar orders that have been filled, or want to check if you are currently in an npc shop to prevent the player from selling their hyperion, almost every single SkyBlock mod will eventually want to read from an inventory.</p>
+<h2 id="getting-the-inventory">Getting the inventory<a class="headerlink" href="#getting-the-inventory" title="Permanent link">&para;</a></h2>
+<p>Let's just for now be quick and dirty and use a <code>ClientTickEvent</code>. The <code>ClientTickEvent</code> gets run multiple times each tick, so having code in there is generally not super recommended. But for now this will be fine.</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nd">@SubscribeEvent</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onTick</span><span class="p">(</span><span class="n">TickEvent</span><span class="p">.</span><span class="na">ClientTickEvent</span><span class="w"> </span><span class="n">event</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="na">phase</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">TickEvent</span><span class="p">.</span><span class="na">Phase</span><span class="p">.</span><span class="na">END</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w"> </span><span class="c1">// (1)!</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="n">GuiScreen</span><span class="w"> </span><span class="n">currentScreen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Minecraft</span><span class="p">.</span><span class="na">getMinecraft</span><span class="p">().</span><span class="na">currentScreen</span><span class="p">;</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">currentScreen</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">GuiChest</span><span class="p">))</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w"> </span><span class="c1">// (2)!</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="n">GuiChest</span><span class="w"> </span><span class="n">currentScreen1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">GuiChest</span><span class="p">)</span><span class="w"> </span><span class="n">currentScreen</span><span class="p">;</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="n">ContainerChest</span><span class="w"> </span><span class="n">container</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">ContainerChest</span><span class="p">)</span><span class="w"> </span><span class="n">currentScreen1</span><span class="p">.</span><span class="na">inventorySlots</span><span class="p">;</span><span class="w"> </span><span class="c1">// (3)!</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="n">LogManager</span><span class="p">.</span><span class="na">getLogger</span><span class="p">(</span><span class="s">&quot;ExampleMod&quot;</span><span class="p">).</span><span class="na">info</span><span class="p">(</span><span class="s">&quot;Container Name: &quot;</span><span class="w"> </span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">        </span><span class="o">+</span><span class="w"> </span><span class="n">container</span><span class="p">.</span><span class="na">getLowerChestInventory</span><span class="p">().</span><span class="na">getDisplayName</span><span class="p">().</span><span class="na">getFormattedText</span><span class="p">());</span><span class="w"> </span><span class="c1">// (4)!</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="p">}</span>
+</span></code></pre></div>
+<ol>
+<li>First, we only want to check in one phase. The <code>ClientTickEvent</code> is called multiple times per tick, but we only need to check the GUI once per tick.</li>
+<li>Check if we are in a chest</li>
+<li>Cast the screen chest, get the container coresponding to the chest and cast that to be a ContainerChest.</li>
+<li>Log out the display name of the chest inventory</li>
+</ol>
+<p>So there are a few interesting things going on here. And maybe we should start with the question what is a <code>GuiChest</code> versus a <code>ContainerChest</code> versus a <code>IInventory</code>.</p>
+<p>The <code>GuiChest</code> is probably the easiest one. It represents the actual GUI you see, so it contains information about user actions (such as dragged item stacks, hovered slots) and does the actual drawing and click handling.</p>
+<p>However, <code>GuiChest</code> does not store any items. Instead it has a reference to a <code>Container</code>. The <code>Container</code> represents the logical state of that chest interface. It contains informations about all the items on screen as well as logical counterparts to GUI state (such as the dragged item stacks).</p>
+<p>But the <code>Container</code> is actually not the master of all things items either, instead it aggregates an <code>IInventory</code>. Those are the actual definitive sources of state for the items. In case of a <code>ChestContainer</code> there are actually two <code>IInventory</code> instance, one for the player inventory, and one for the chest contents. Confusingly the chest contents are called <code>lowerChestInventory</code> despite being in the upper part of the screen. The <code>IInventory</code> also contains information about the name of the chest.</p>
+<p>Another thing to note here is that we cast a <code>Container</code> to a <code>ContainerChest</code>. We can do this, because the <code>GuiChest</code> always has a <code>ContainerChest</code> as container, even if that information isn't present in the type system.</p>
+<h2 id="accessing-items">Accessing Items<a class="headerlink" href="#accessing-items" title="Permanent link">&para;</a></h2>
+<p>Now that we know the basics of inventory logistics of Minecraft, we can actually make use of our opened chest gui.</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// Continuing the TickEvent from before</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">container</span><span class="p">.</span><span class="na">getLowerChestInventory</span><span class="p">().</span><span class="na">getSizeInventory</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">ItemStack</span><span class="w"> </span><span class="n">stack</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">container</span><span class="p">.</span><span class="na">getLowerChestInventory</span><span class="p">().</span><span class="na">getStackInSlot</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">stack</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">        </span><span class="n">LogManager</span><span class="p">.</span><span class="na">getLogger</span><span class="p">(</span><span class="s">&quot;ExampleMod&quot;</span><span class="p">).</span><span class="na">info</span><span class="p">(</span><span class="s">&quot;Slot &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">stack</span><span class="p">);</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="p">}</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>[22:19:28] [main/INFO] (ExampleMod) Container Name: Large Chest§r
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>[22:19:28] [main/INFO] (ExampleMod) Slot 0: 12xitem.enderPearl@0
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>[22:19:28] [main/INFO] (ExampleMod) Slot 1: 51xtile.tnt@0
+</span></code></pre></div>
+<p>Note that we access the <code>lowerChestInventory</code> here. Accessing the <code>ContainerChest</code> directly gives us not only the chest contents, but the player inventory also, as all slots get merged into one uber ItemStack storage. This behaviour might actually be wanted sometimes (for example, you might want to highlight slots in both your as well as the chest inventory). Also note that when we access the <code>IInventory</code> we directly access <code>ItemStack</code>s. Accessing the <code>ContainerChest</code> directly is a bit easier and more powerful, but also implicitly includes the player inventory, so extra measure need to be taken:</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">container</span><span class="p">.</span><span class="na">inventorySlots</span><span class="p">.</span><span class="na">size</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="n">Slot</span><span class="w"> </span><span class="n">slot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">container</span><span class="p">.</span><span class="na">inventorySlots</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">slot</span><span class="p">.</span><span class="na">getHasStack</span><span class="p">()</span><span class="w"> </span><span class="cm">/* equivalent to slot.getStack() != null */</span><span class="p">)</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">        </span><span class="n">LogManager</span><span class="p">.</span><span class="na">getLogger</span><span class="p">(</span><span class="s">&quot;ExampleMod&quot;</span><span class="p">).</span><span class="na">info</span><span class="p">(</span><span class="s">&quot;Slot &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">slot</span><span class="p">.</span><span class="na">getStack</span><span class="p">());</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">}</span>
+</span></code></pre></div>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>[22:23:03] [main/INFO] (ExampleMod) Container Name: Large Chest§r
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>[22:23:03] [main/INFO] (ExampleMod) Slot 0: 12xitem.enderPearl@0
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>[22:23:03] [main/INFO] (ExampleMod) Slot 1: 51xtile.tnt@0
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>[22:23:03] [main/INFO] (ExampleMod) Slot 54: 1xitem.potion@0
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>[22:23:03] [main/INFO] (ExampleMod) Slot 55: 1xitem.potion@0
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>[22:23:03] [main/INFO] (ExampleMod) Slot 56: 1xitem.potion@0
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>[22:23:03] [main/INFO] (ExampleMod) Slot 57: 1xitem.potion@0
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>[22:23:03] [main/INFO] (ExampleMod) Slot 58: 1xitem.potion@0
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>[22:23:03] [main/INFO] (ExampleMod) Slot 59: 1xitem.bootsChain@0
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>[22:23:03] [main/INFO] (ExampleMod) Slot 60: 1xitem.skull@3
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>[22:23:03] [main/INFO] (ExampleMod) Slot 61: 6xitem.skull@3
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>[22:23:03] [main/INFO] (ExampleMod) Slot 62: 1xitem.swordIron@0
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>[22:23:03] [main/INFO] (ExampleMod) Slot 73: 1xitem.blazeRod@0
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>[22:23:03] [main/INFO] (ExampleMod) Slot 81: 1xitem.bow@0
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>[22:23:03] [main/INFO] (ExampleMod) Slot 82: 1xitem.swordDiamond@0
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>[22:23:03] [main/INFO] (ExampleMod) Slot 83: 1xitem.stick@0
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>[22:23:03] [main/INFO] (ExampleMod) Slot 84: 1xitem.pickaxeDiamond@0
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>[22:23:03] [main/INFO] (ExampleMod) Slot 85: 1xitem.swordGold@0
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>[22:23:03] [main/INFO] (ExampleMod) Slot 88: 1xitem.horsearmorgold@0
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>[22:23:03] [main/INFO] (ExampleMod) Slot 89: 1xitem.netherStar@0
+</span></code></pre></div>
+<p>First note that we can now use <code>Slot</code>s instead of plain <code>ItemStack</code>. A <code>Slot</code> contains extra information such as <code>xDisplayPosition</code> and <code>yDisplayPosition</code> which you might need in case you want to draw something around certain items.</p>
+<p>If you want to use <code>Slot</code>s without worrying about potential player slots sneaking in, you can use two methods for finding out where a slot belongs:</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">Slot</span><span class="w"> </span><span class="n">slot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">container</span><span class="p">.</span><span class="na">inventorySlots</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kt">boolean</span><span class="w"> </span><span class="n">isChestSlotA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">!</span><span class="p">(</span><span class="n">slot</span><span class="p">.</span><span class="na">inventory</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">InventoryPlayer</span><span class="p">);</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="kt">boolean</span><span class="w"> </span><span class="n">isChestSlotB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">container</span><span class="p">.</span><span class="na">getLowerChestInventory</span><span class="p">().</span><span class="na">getSizeInventory</span><span class="p">();</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="kt">boolean</span><span class="w"> </span><span class="n">WRONG_METHOD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">slot</span><span class="p">.</span><span class="na">getSlotIndex</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">container</span><span class="p">.</span><span class="na">getLowerChestInventory</span><span class="p">().</span><span class="na">getSizeInventory</span><span class="p">();</span>
+</span></code></pre></div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You need to use <code>slot.slotNumber</code> or the <code>i</code> index you used for iterating here. Using the <code>getSlotIndex</code> is meaningless, since that index is the index <em>inside</em> of the <code>IInventory</code> (so the first hotbar slot is always index <code>0</code>, just like the first slot of a chest)</p>
+</div>
+<p>Overall I think that the index based method is a lot less pretty. Not only is it not a real invariant of the <code>Container</code> class for those two inventories to exist in this order (In theory you could have a <code>Container</code> that puts the <code>slotNumber</code> of the <code>InventoryPlayer</code> first, and then the chest contents. This is not the case in vanilla code, however), but it also very prone to mistakes, such as messing up <code>&lt;</code> and <code>&lt;=</code>. We also lose all help from the type system. That <code>int</code> has no types associated with it, so especially when passing arounds <code>int</code>s like that, they use meaning very quickly, so we have to write a lot more documentation to keep our code understandable. The <code>inventory instanceof InventoryPlayer</code> is very explicit and our code reads almost like documentation itself: "is this slot inside of the players inventory or not".</p>
+<h2 id="inside-of-items">Inside of Items<a class="headerlink" href="#inside-of-items" title="Permanent link">&para;</a></h2>
+<p>Just logging out items to the command line is neat and all, but in most cases you will want to programatically inspect items.</p>
+<p>So, for the final time in this article, let's do a disambiguation: <code>ItemStack</code> versus <code>Item</code>. This one is hopefully a simple one.</p>
+<p><code>ItemStack</code> represents a concrete stack. It has a size, metadata (custom name, custom lore, ExtraAttributes). If you have two item stacks in a chest somewhere, you will have two instances of <code>ItemStack</code> that reference those <em>exact</em> two item stacks.</p>
+<p><code>Item</code> on the other hand represents a <em>type</em> of an item. For example, a <code>diamond_sword</code> or a <code>dirt</code>. Some things that you might think of as an "item type" is actually grouped together under one <code>Item</code> instance. Different coloured objects, such as wool or dyes are all just one <code>Item.dye</code> and which dye you are referencing is part of the <code>ItemStack</code> metadata. You will find most <code>Item</code>s inside of the <code>Items</code> class (<code>Items.apple</code>). However, items that correspond to a <code>Block</code> are usually not found in there. Instead, you can use <code>Item.getItemFromBlock(Blocks.dirt)</code> to get those <code>Item</code> types. Note that you will always get the same exact object instance from this method, so you can use <code>==</code> on those returned objects. Also be aware that some more exotic blocks (such as doors) might have individual <code>Item</code>s that end up placing a completely unrelated <code>Block</code>. For example: there is a <code>Items.wheat_seeds</code> which places a <code>Blocks.wheat</code> when right clicked on farmland, but calling <code>Item.getItemFromBlock(Blocks.wheat)</code> will get you a null instead of your <code>Items.wheat_seed</code>. For those "placer" <code>Item</code>s you will usually want to work in whatever medium is native for what you are doing (<code>Item</code> for inventories and entities, <code>Block</code> for reading world data).</p>
+<p>How do you get data out of an <code>ItemStack</code> now. There are two ways of going about this: APIs or NBT.</p>
+<h3 id="item-apis">Item APIs<a class="headerlink" href="#item-apis" title="Permanent link">&para;</a></h3>
+<p>Item APIs are arguably easier to use, so you might be tempted to just always use the, but they have some disadvantages I will talk about soon.</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">logger</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">&quot;Slot &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;:&quot;</span><span class="p">);</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">logger</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">&quot;  Item: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">stack</span><span class="p">.</span><span class="na">getItem</span><span class="p">());</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">logger</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">&quot;  Display Name: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">stack</span><span class="p">.</span><span class="na">getDisplayName</span><span class="p">());</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">logger</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">&quot;  Stack Size: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">stack</span><span class="p">.</span><span class="na">stackSize</span><span class="p">);</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="n">logger</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">&quot;  Lore:&quot;</span><span class="p">);</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">loreLine</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">stack</span><span class="p">.</span><span class="na">getTooltip</span><span class="p">(</span><span class="n">Minecraft</span><span class="p">.</span><span class="na">getMinecraft</span><span class="p">().</span><span class="na">thePlayer</span><span class="p">,</span><span class="w"> </span><span class="kc">false</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="n">logger</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">&quot;   - &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">loreLine</span><span class="p">);</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>This prints out all the information very nicely:</p>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>[22:50:07] [main/INFO] (ExampleMod) Slot 1:
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>[22:50:07] [main/INFO] (ExampleMod)   Item: net.minecraft.item.ItemBlock@68a94e58
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>[22:50:07] [main/INFO] (ExampleMod)   Display Name: §9Superboom TNT
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>[22:50:07] [main/INFO] (ExampleMod)   Stack Size: 51
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>[22:50:07] [main/INFO] (ExampleMod)   Lore:
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>[22:50:07] [main/INFO] (ExampleMod)    - §o§9Superboom TNT§r
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>[22:50:07] [main/INFO] (ExampleMod)    - §5§o§7Breaks weak walls. Can be used to
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>[22:50:07] [main/INFO] (ExampleMod)    - §5§o§7blow up Crypts in §cThe Catacombs §7and
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>[22:50:07] [main/INFO] (ExampleMod)    - §5§o§7§5Crystal Hollows§7.
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>[22:50:07] [main/INFO] (ExampleMod)    - §5§o
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>[22:50:07] [main/INFO] (ExampleMod)    - §5§o§9§lRARE
+</span></code></pre></div>
+<p>We get a bit of a hiccup with the <code>Item</code>. Turns out just system out printing a <code>Item</code> isn't great. You can call <code>.getRegistryName()</code> to fix this however:</p>
+<div class="language-text highlight"><span class="filename">Output</span><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>[22:52:30] [main/INFO] (ExampleMod)   Item: minecraft:tnt
+</span></code></pre></div>
+<h3 id="nbt-apis">NBT APIs<a class="headerlink" href="#nbt-apis" title="Permanent link">&para;</a></h3>
+<p>But, we soon run into problems. Two kinds of problems: logical and performance. Using the standard APIs for lore and display name invoke Forge events, which causes a <em>lot</em> of other code to run, exponentially more code the more mods you have. This is not only slow (since those other mods might do some expensive calculations), but will also obscure information. Some mods might append some information to the bottom of the tooltip, thereby not making the rarity the last line of the lore anymore, for example.</p>
+<p>So we turn to the API that doesn't call mods: NBT. NBT (Named Binary Tag) is a data format for storing essentially complex key value objects, similar to JSON. Instead of using verbose (human readable) representation for numbers, strings, bytes, booleans, lists, dictionaries NBT uses binary. There is a format called SNBT that represents NBT data in a human readable way, which looks like slightly modified JSON, which i will also use for NBT in here.</p>
+<p>Minecraft uses NBT to store all the information about items, blocks and entities in the background. Most of that data is only available on the server (thereby inaccessible inside of a client mod) and sent to the client via some other mean. The big exception to that are items. <code>ItemStack</code>s are sent (almost) entirely via NBT.</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kt">byte</span><span class="w"> </span><span class="n">STRING_NBT_TAG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">NBTTagString</span><span class="p">().</span><span class="na">getId</span><span class="p">();</span><span class="w"> </span><span class="c1">// (1)!</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">NBTTagCompound</span><span class="w"> </span><span class="n">tagCompound</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stack</span><span class="p">.</span><span class="na">getTagCompound</span><span class="p">();</span><span class="c1">// (2)!</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tagCompound</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span><span class="w"> </span><span class="c1">// (3)!</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="n">String</span><span class="w"> </span><span class="n">displayName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tagCompound</span><span class="p">.</span><span class="na">getCompoundTag</span><span class="p">(</span><span class="s">&quot;display&quot;</span><span class="p">).</span><span class="na">getString</span><span class="p">(</span><span class="s">&quot;Name&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// (4)!</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="n">NBTTagList</span><span class="w"> </span><span class="n">loreList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tagCompound</span><span class="p">.</span><span class="na">getCompoundTag</span><span class="p">(</span><span class="s">&quot;display&quot;</span><span class="p">).</span><span class="na">getTagList</span><span class="p">(</span><span class="s">&quot;Lore&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">STRING_NBT_TAG</span><span class="p">);</span><span class="w"> </span><span class="c1">// (5)!</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i1</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">loreList</span><span class="p">.</span><span class="na">tagCount</span><span class="p">();</span><span class="w"> </span><span class="n">i1</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// (6)!</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">loreLine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">loreList</span><span class="p">.</span><span class="na">getStringTagAt</span><span class="p">(</span><span class="n">i1</span><span class="p">);</span><span class="w"> </span><span class="c1">// (7)!</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="p">}</span>
+</span></code></pre></div>
+<ol>
+<li>First let's save the tag id of a string. This is essentially the "type" of a string when using NBTs.</li>
+<li>Access the NBT associated with an <code>ItemStack</code>. This will always be a <code>NBTTagCompound</code> which is equivalent to a JSON <code>object</code></li>
+<li>The <code>NBTTagCompound</code> of an <code>ItemStack</code> can be null.</li>
+<li>First access the <code>NBTTagCompound</code> that is the "display". Then in that sub object access the string at "Name".</li>
+<li>First access the <code>NBTTagCompound</code> that is the "display". Then in that sub object access a list with the elements of type <code>NBTTagString</code></li>
+<li>We can get the length of the list with <code>tagCount()</code></li>
+<li>Now we can access each line of lore from the list using <code>getStringTagAt</code>
+   Given how long this code is, I usually have a helper method for these types of operations in my code:
+   <div class="language-java highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="o">&lt;</span><span class="n">U</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">NBTBase</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">listFromNBT</span><span class="p">(</span><span class="n">NBTTagList</span><span class="w"> </span><span class="n">nbtList</span><span class="p">,</span><span class="w"> </span><span class="n">Function</span><span class="o">&lt;</span><span class="n">U</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">reader</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="n">nbtList</span><span class="p">.</span><span class="na">tagCount</span><span class="p">());</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">nbtList</span><span class="p">.</span><span class="na">tagCount</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">        </span><span class="n">ts</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">reader</span><span class="p">.</span><span class="na">apply</span><span class="p">((</span><span class="n">U</span><span class="p">)</span><span class="w"> </span><span class="n">nbtList</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">i</span><span class="p">)));</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">ts</span><span class="p">;</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="p">}</span>
+</span></code></pre></div>
+   <div class="language-java highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">NBTTagList</span><span class="w"> </span><span class="n">loreList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tagCompound</span><span class="p">.</span><span class="na">getCompoundTag</span><span class="p">(</span><span class="s">&quot;display&quot;</span><span class="p">).</span><span class="na">getTagList</span><span class="p">(</span><span class="s">&quot;Lore&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">STRING_NBT_TAG</span><span class="p">);</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">loreStrings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">listFromNBT</span><span class="p">(</span><span class="n">loreList</span><span class="p">,</span><span class="w"> </span><span class="n">NBTTagString</span><span class="p">::</span><span class="n">getString</span><span class="p">);</span>
+</span></code></pre></div>
+   This is a very powerful method that makes working with nbt lists a lot easier, but it also very easy to cause RuntimeExceptions this way. In the end I personally think that NBT is always a mess of potential runtime exceptions. There are some ways to make it more bearable, but it will always be error prone.</li>
+</ol>
+<p>You can already see how our code is getting longer. And this isn't the only problem with NBTs. Some NBT elements might not be there even tho you expect them to be. There are two ways how this manifests. A <code>null</code> in case of the root <code>stack.getTagCompound()</code> or just missing properties inside of a <code>TagCompound</code>. In case of missing properties this will just silently default construct a matching object. This is already a problem here, since we will get an empty string if we don't have a display name set (instead of null, or a fallback to the item name). It would be great if we could have a more explicit "absent" value, but sadly NBT does not offer that. Instead you will need to manually and error pronely check with <code>hasKey</code>.</p>
+<p>Another problem are those many string keys. Not only is it hard to remember them and look them up, but there is also 0 feedback at compile time for typos or any other faults in those strings. You will instead either crash at runtime, or more likely silently get empty (faulty) data.</p>
+<p>All of this makes NBT extremely unattractive to work with. But if we want our code to work correctly, even with other mod installed, or if we want our code to run fast, then we will need to use NBT more often than we would like.</p>
+<p>And it is not all bad. NBT also allows us access to bonus data that normal <code>ItemStack</code> APIs don't have access to. Enter <code>ExtraAttributes</code>.</p>
+<h3 id="extraattributes">ExtraAttributes<a class="headerlink" href="#extraattributes" title="Permanent link">&para;</a></h3>
+<p><code>ExtraAttributes</code> is a set of extra NBT data that is sent along with most <code>ItemStack</code>s on Hypixel. It contains a lot of things from item ids to pet exp to enchants and reforges. It is essentially the machine readable counter part to the lore. Much like the lore it is not suuuper consistent, but usually survives more versions without changes. In the end we are always at the mercy of hypixel.</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="p">{</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="err">id</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;minecraft:diamond_pickaxe&quot;</span><span class="p">,</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">    </span><span class="err">Cou</span><span class="kc">nt</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="err">b</span><span class="p">,</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">    </span><span class="kc">ta</span><span class="err">g</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">        </span><span class="err">e</span><span class="kc">n</span><span class="err">ch</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">            </span><span class="err">lvl</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="err">s</span><span class="p">,</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">            </span><span class="err">id</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="err">s</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="w">        </span><span class="p">}],</span>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="w">        </span><span class="err">U</span><span class="kc">n</span><span class="err">breakable</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="err">b</span><span class="p">,</span>
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="w">        </span><span class="err">HideFlags</span><span class="p">:</span><span class="w"> </span><span class="mi">254</span><span class="p">,</span>
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="w">        </span><span class="err">display</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="w">            </span><span class="err">Lore</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">],</span>
+</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="w">            </span><span class="err">Name</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;§aDiamond Pickaxe&quot;</span>
+</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="w">        </span><span class="p">},</span>
+</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="w">        </span><span class="err">Ex</span><span class="kc">tra</span><span class="err">A</span><span class="kc">ttr</span><span class="err">ibu</span><span class="kc">tes</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a><span class="w">            </span><span class="err">id</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DIAMOND_PICKAXE&quot;</span><span class="p">,</span>
+</span><span id="__span-12-17"><a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a><span class="w">            </span><span class="err">e</span><span class="kc">n</span><span class="err">cha</span><span class="kc">nt</span><span class="err">me</span><span class="kc">nts</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-12-18"><a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a><span class="w">                </span><span class="err">e</span><span class="kc">ff</span><span class="err">icie</span><span class="kc">n</span><span class="err">cy</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span>
+</span><span id="__span-12-19"><a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a><span class="w">            </span><span class="p">},</span>
+</span><span id="__span-12-20"><a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a><span class="w">            </span><span class="err">uuid</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;28d1c00d-2112-453a-82c1-c35a28bebf6f&quot;</span><span class="p">,</span>
+</span><span id="__span-12-21"><a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a><span class="w">            </span><span class="kc">t</span><span class="err">imes</span><span class="kc">ta</span><span class="err">mp</span><span class="p">:</span><span class="w"> </span><span class="mi">1691931000000</span><span class="err">L</span>
+</span><span id="__span-12-22"><a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-12-23"><a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-12-24"><a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a><span class="w">    </span><span class="err">Damage</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="err">s</span>
+</span><span id="__span-12-25"><a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>We can see at the root the actual item metadata (the <code>Count</code>, <code>id</code> and <code>Damage</code>). Those are part of the <code>ItemStack</code> and are always parsed by the <code>ItemStack</code> APIs. The NBT we get access to with <code>getTagCompound</code> is the <code>tag</code> part of this SNBT.</p>
+<p>The <code>ench</code> tag contains the <em>vanilla</em> enchantments. Those are used by vanilla code. Hypixel does not send all enchantments this way, only the ones that affect client behaviour, such as efficiency and depth strider.</p>
+<p>The <code>Unbreakable</code> tag hides the durability bar. This makes your items not show the durability bar for a split second whenever you mine a block.</p>
+<p>The <code>HideFlags</code> tag prevents minecraft from adding information to the lore. Each bit represents something different, like "Hide the fact that is item is marked as Unbreakable" or "hide the enchantments on this item".</p>
+<p>We looked at the <code>display</code> tag earlier.</p>
+<p>Lastly there is <code>ExtraAttributes</code>. This section is not vanilla at all. It is instead Hypixel's own internal data structures. This is used by Hypixels code to represent information about the item that go beyond what Minecraft can express. It contains an <code>id</code> that is the official hypixel id (which may be different from the vanilla id), <code>enchantments</code> (which is a tag compound mapping enchantment ids to levels), uuids which are a unique identifier for each item that exist (for example: no two ASPECT_OF_THE_END have the same uuid, you get a new one every time you craft) and so much more.</p>
+<p>Some of this information is found on almost every item (such as <code>id</code>), some of this data is item specific and some of it is shared between only a few items.</p>
+<p>Generally you can find out quite a lot about an item by looking at its <code>ExtraAttributes</code>. I can't go over everything here, but let's look at one more example:</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="p">{</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">    </span><span class="err">id</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;minecraft:skull&quot;</span><span class="p">,</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">    </span><span class="err">Cou</span><span class="kc">nt</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="err">b</span><span class="p">,</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">    </span><span class="kc">ta</span><span class="err">g</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="w">        </span><span class="err">SkullOw</span><span class="kc">ner</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="w">            </span><span class="err">Id</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ecc8937f-a09e-4f06-a10a-efadfaff1e3b&quot;</span><span class="p">,</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="w">            </span><span class="err">hypixelPopula</span><span class="kc">te</span><span class="err">d</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="err">b</span><span class="p">,</span>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="w">            </span><span class="err">Proper</span><span class="kc">t</span><span class="err">ies</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="w">                </span><span class="kc">te</span><span class="err">x</span><span class="kc">tures</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="w">                    </span><span class="err">Value</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzA3MWE3NmY2NjlkYjVlZDZkMzJiNDhiYjJkYmE1NWQ1MzE3ZDdmNDUyMjVjYjMyNjdlYzQzNWNmYTUxNCJ9fX0=&quot;</span>
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="w">                </span><span class="p">}]</span>
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="w">            </span><span class="p">},</span>
+</span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="w">            </span><span class="err">Name</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;§ecc8937f-a09e-4f06-a10a-efadfaff1e3b&quot;</span>
+</span><span id="__span-13-14"><a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="w">        </span><span class="p">},</span>
+</span><span id="__span-13-15"><a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a><span class="w">        </span><span class="err">display</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-13-16"><a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a><span class="w">            </span><span class="err">Lore</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">],</span>
+</span><span id="__span-13-17"><a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a><span class="w">            </span><span class="err">Name</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;§7[Lvl 100] §6Elephant&quot;</span>
+</span><span id="__span-13-18"><a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a><span class="w">        </span><span class="p">},</span>
+</span><span id="__span-13-19"><a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a><span class="w">        </span><span class="err">Ex</span><span class="kc">tra</span><span class="err">A</span><span class="kc">ttr</span><span class="err">ibu</span><span class="kc">tes</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-13-20"><a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a><span class="w">            </span><span class="err">pe</span><span class="kc">t</span><span class="err">I</span><span class="kc">nf</span><span class="err">o</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{\&quot;type\&quot;:\&quot;ELEPHANT\&quot;,\&quot;active\&quot;:false,\&quot;exp\&quot;:4.0048701025808394E7,\&quot;tier\&quot;:\&quot;LEGENDARY\&quot;,\&quot;hideInfo\&quot;:false,\&quot;heldItem\&quot;:\&quot;GREEN_BANDANA\&quot;,\&quot;candyUsed\&quot;:0,\&quot;uuid\&quot;:\&quot;8d35c8fe-1351-47f6-8609-e0b0fbcb077d\&quot;,\&quot;uniqueId\&quot;:\&quot;5cdc7008-009e-4730-8f52-cd970491ecc4\&quot;,\&quot;hideRightClick\&quot;:false,\&quot;noMove\&quot;:false}&quot;</span><span class="p">,</span>
+</span><span id="__span-13-21"><a id="__codelineno-13-21" name="__codelineno-13-21" href="#__codelineno-13-21"></a><span class="w">            </span><span class="err">id</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PET&quot;</span><span class="p">,</span>
+</span><span id="__span-13-22"><a id="__codelineno-13-22" name="__codelineno-13-22" href="#__codelineno-13-22"></a><span class="w">            </span><span class="err">uuid</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8d35c8fe-1351-47f6-8609-e0b0fbcb077d&quot;</span>
+</span><span id="__span-13-23"><a id="__codelineno-13-23" name="__codelineno-13-23" href="#__codelineno-13-23"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-13-24"><a id="__codelineno-13-24" name="__codelineno-13-24" href="#__codelineno-13-24"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-13-25"><a id="__codelineno-13-25" name="__codelineno-13-25" href="#__codelineno-13-25"></a><span class="w">    </span><span class="err">Damage</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="err">s</span>
+</span><span id="__span-13-26"><a id="__codelineno-13-26" name="__codelineno-13-26" href="#__codelineno-13-26"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>This pet is a skull, which has some interesting information in the <code>SkullOwner</code> tag. That tag contains the texture for the skull. This can be used occassionally when identifying custom items that don't have a <code>ExtraAttributes.id</code> tag.</p>
+<p>Also we can tell that the <code>id</code> of this pet is just <code>PET</code>. You might expect it to be <code>ELEPHANT_PET</code> from mods such as NEU, but those ids are just made up extensions to the <code>id</code> by Hypixel. The pet type is actually stored in the <code>petInfo</code> string, which is actually a string containing a normal JSON object that needs to be decoded on top of the NBT data parsing.</p>
+<p>You can see all kinds of useful info in there, like <code>candyUsed</code> which is normally a stat hidden on level 100 pets. It contains information about the <code>type</code>, obviously, but also the total <code>exp</code> and the <code>heldItem</code> (with an item <code>id</code> instead of just a name).</p>
+<p>This kind of way of inspecting data is really powerful and makes a lot of mods possible in the first place. But NBTs are messy and I would highly recommend you transfer NBTs into normal Java objects <a href="https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/">as soon as possible</a>.</p>
+<h2 id="closing-out-the-guiopenevent">Closing out - The GuiOpenEvent<a class="headerlink" href="#closing-out-the-guiopenevent" title="Permanent link">&para;</a></h2>
+<p>And finally let's circle back to our first section, in which we started with the <code>ClientTickEvent</code>. In the end <code>ClientTickEvent</code> works just fine. But also, it leaves us lacking. The performance isn't great and we sometimes just miss items. Normally we could use a <code>GuiOpenEvent</code>. This fires whenever a gui is opened, so we could in theory just read all of our data once, when we open a chest. Sadly that doesn't work out, since Hypixel only sends the items after the GUI has opened. We might get some or all of the items in a single tick, but we can't be so sure about that when there are people with a 300, 400 or even 500 ms ping to Hypixel. There are many solutions to this problem: simply waiting a set amount of ticks after a <code>GuiOpenEvent</code> is probably the easiest one. That one is obviously a bit sloppy, but is also very simple to implement. Another solutions, would be mixing into <code>NetHandlerPlayClient.handleSetSlot</code> and listening for the bottommost rightmost item to be set (slotCount - 1) (this one is a lot cleaner, works faster and almost never gives us any partial inventory states), which still fails if Hypixel decides to use empty item stacks for that slot. Almost always there will be a glass pane or another item, but when a Hypixel GUI decides against using glass panes your code might not just run at all. You could maybe decide to mix those methods: either the last index is set, or we waited 5 ticks after the <code>GuiOpenEvent</code>. There are probably more options out there to explore and it is up to you how ridiculous you want to make your system for detecting inventory opens. In the end Hypixel doesn't specifically provide an API for mod developers, so we have to make due with what happens to work for us.</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 29, 2024</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 29, 2024</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.annotate", "content.code.copy", "content.tooltips", "navigation.top", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.tracking", "navigation.indexes", "content.action.edit", "search.suggest", "search.share"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e1c3ead8.min.js"></script>
+      
+    
+  </body>
+</html>

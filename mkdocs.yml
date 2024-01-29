@@ -14,6 +14,7 @@ nav:
   - events.md
   - commands.md
   - screens.md
+  - inventories.md
   - vanilla.md
   - Mixins:
     - mixins/index.md

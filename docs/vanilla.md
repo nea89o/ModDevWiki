@@ -79,7 +79,7 @@ for (String s : scoreList) {
 After writing this command and testing it in a single player world everything seems to work out! But not so fast! When we actually try this command on Hypixel something bad happens.
 
 The printout in chat seems all right. But if we also print out the string into the console we see a bunch of weird emojis:
-``` 
+``` title="Output"
 [17:03:46] [main/INFO] (Scoreboard) §701/29/24 §8m22💣§8AA
 [17:03:46] [main/INFO] (Scoreboard)   👽
 [17:03:46] [main/INFO] (Scoreboard)  Autumn 30th🔮
@@ -113,7 +113,7 @@ String stripAliens(String text) {
 
 Or you could go even easier and just manually have a blacklist of emojis (since they always seem to be the same). In either case you arrive at a beautiful, clean scoreboard string list:
 
-```
+``` title="Output"
 [17:09:57] [main/INFO] (Scoreboard) §701/29/24 §8m23§8AP
 [17:09:57] [main/INFO] (Scoreboard)
 [17:09:57] [main/INFO] (Scoreboard)  Autumn 30th

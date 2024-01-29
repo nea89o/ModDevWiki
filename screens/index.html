@@ -17,7 +17,7 @@
         <link rel="prev" href="../commands/">
       
       
-        <link rel="next" href="../mixins/">
+        <link rel="next" href="../vanilla/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -631,6 +631,26 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../vanilla/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Looking through Vanilla Code
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
     
     
       
@@ -653,7 +673,7 @@
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
         
           
           
@@ -669,14 +689,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             Mixins
           </label>
@@ -1008,7 +1028,7 @@
 <p>Creating a custom screen manually is quite a big effort. Instead you can consider using an existing GUI library:</p>
 <ul>
 <li><a href="https://notenoughupdates.org/MoulConfig/">MoulConfig</a> is a config library with some features for custom GUIs based on NEUs GUIs.</li>
-<li><a href="https://github.com/EssentialGG/Elementa">Elementa</a> is a gui library made by sk1er. It mainly targets Kotlin, an alternative programming language to Java, but can in theory also be used from Java.</li>
+<li><a href="https://github.com/EssentialGG/Elementa">Elementa</a> is a gui library made by Sk1er. It mainly targets Kotlin, an alternative programming language to Java, but can in theory also be used from Java.</li>
 <li><a href="https://github.com/EssentialGG/Vigilance">Vigilance</a> is fully automated Elementa for config GUIs only.</li>
 <li><a href="https://docs.polyfrost.org/oneconfig/">OneConfig</a> is a config library made by Polyfrost.</li>
 <li>or just do it yourself. Writing a gui is not the easiest thing in modding, but nothing allows you more customization.</li>
@@ -1044,7 +1064,7 @@
 </span></code></pre></div>
 <p>You can also always access the <code>width</code> and <code>height</code> fields to get the screen width and height to layout your components.</p>
 <h2 id="adding-buttons">Adding buttons<a class="headerlink" href="#adding-buttons" title="Permanent link">&para;</a></h2>
-<p>Vanilla has a system for buttons already built in, which i am using for a simple color selector:</p>
+<p>Vanilla has a system for buttons already built in, which I am using for a simple color selector:</p>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">lastClickedButton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nd">@Override</span>
@@ -1089,7 +1109,7 @@
 <h2 id="rendering-text-and-images">Rendering text and images<a class="headerlink" href="#rendering-text-and-images" title="Permanent link">&para;</a></h2>
 <p>Instead of using built in buttons and basic rectangles, you can also render more complex things.</p>
 <h3 id="rendering-text">Rendering text<a class="headerlink" href="#rendering-text" title="Permanent link">&para;</a></h3>
-<p>You can easily use Minecrafts built in font renderer to render any text you like.</p>
+<p>You can easily use Minecraft's built in font renderer to render any text you like.</p>
 <div class="language-java highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nd">@Override</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">drawScreen</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">mouseX</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">mouseY</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">partialTicks</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="c1">// Draw tinted background</span>

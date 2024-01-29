@@ -26,6 +26,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://moddev.nea.moe/vanilla/</loc>
+         <lastmod>2024-01-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://moddev.nea.moe/mixins/</loc>
          <lastmod>2024-01-29</lastmod>
          <changefreq>daily</changefreq>

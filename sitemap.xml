@@ -2,62 +2,62 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://moddev.nea.moe/</loc>
-         <lastmod>2024-01-29</lastmod>
+         <lastmod>2024-02-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://moddev.nea.moe/commands/</loc>
-         <lastmod>2024-01-29</lastmod>
+         <lastmod>2024-02-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://moddev.nea.moe/events/</loc>
-         <lastmod>2024-01-29</lastmod>
+         <lastmod>2024-02-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://moddev.nea.moe/ide-setup/</loc>
-         <lastmod>2024-01-29</lastmod>
+         <lastmod>2024-02-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://moddev.nea.moe/inventories/</loc>
-         <lastmod>2024-01-29</lastmod>
+         <lastmod>2024-02-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://moddev.nea.moe/screens/</loc>
-         <lastmod>2024-01-29</lastmod>
+         <lastmod>2024-02-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://moddev.nea.moe/vanilla/</loc>
-         <lastmod>2024-01-29</lastmod>
+         <lastmod>2024-02-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://moddev.nea.moe/mixins/</loc>
-         <lastmod>2024-01-29</lastmod>
+         <lastmod>2024-02-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://moddev.nea.moe/mixins/accessors/</loc>
-         <lastmod>2024-01-29</lastmod>
+         <lastmod>2024-02-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://moddev.nea.moe/mixins/adding-fields/</loc>
-         <lastmod>2024-01-29</lastmod>
+         <lastmod>2024-02-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://moddev.nea.moe/mixins/advanced-injects/</loc>
-         <lastmod>2024-01-29</lastmod>
+         <lastmod>2024-02-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://moddev.nea.moe/mixins/simple-injects/</loc>
-         <lastmod>2024-01-29</lastmod>
+         <lastmod>2024-02-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

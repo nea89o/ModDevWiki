@@ -58,6 +58,11 @@ Always use these run configs instead the `runClient` task in the gradle tab. The
 
 This error indicates that your Java Version does not support architectury. Fix this by setting your gradle JDK to 17
 
+### Unsupported class file major version 65
+
+This error indicates that your Java version is too new. Fix this by setting your gradle JDK to use exactly java version 17, not something newer like Java 21.
+
+
 
 
 

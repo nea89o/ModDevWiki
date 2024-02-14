@@ -1,6 +1,6 @@
 # Setting up
 
-This is a slightly rewritten version of [SBMW's Getting started article](https://sbmw.ca/development/getting-started/). That one was also written by me, and contains roughly the same info.
+This is a slightly rewritten version of [SBMW's Getting started article](https://web.archive.org/web/20240214104717/https://sbmw.ca/development/getting-started/). That one was also written by me, and contains roughly the same info.
 
 !!!note
     Downloads in this tutorial are provided as a convenience, if you know what you are doing you can find these downloads somewhere else (in a package manager like chocolatey, pacman or [sdkman](https://sdkman.io/)). If you decide to go that route, please make sure that you download the exact same Software and not something similar.

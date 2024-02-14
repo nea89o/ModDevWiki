@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.7">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.9">
     
     
       
@@ -448,10 +448,8 @@
     
     
     
-    
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
-        
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
@@ -687,6 +685,14 @@
 </span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="p">]</span>
 </span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="p">}</span>
 </span></code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Depending on the template you used for your mod, you may have an auto mixin plugin installed already. That kind of plugin automatically finds all mixins that are inside of your mixin package, meaning you can just ignore the <code>mixin.modid.json</code>. You still need to put your mixins inside of the correct package, but you don't need to register them explicitly anymore.</p>
+<p>If you have such a plugin, you can find it by looking for something like this:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="w">  </span><span class="nt">&quot;plugin&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${basePackage}.init.AutoDiscoveryMixinPlugin&quot;</span><span class="p">,</span>
+</span></code></pre></div>
+in your mixin json.</p>
+</div>
 <p>You can also have multiple mixins for the same Minecraft class.</p>
 <h2 id="mixin-use-cases">Mixin Use Cases<a class="headerlink" href="#mixin-use-cases" title="Permanent link">&para;</a></h2>
 <p>I recommend you start learning with accessor mixins, since those are the easiest, and go down the list from there.</p>
@@ -698,17 +704,17 @@
 <h2 id="compatibility">Compatibility<a class="headerlink" href="#compatibility" title="Permanent link">&para;</a></h2>
 <h3 id="modid-postfix">Modid postfix<a class="headerlink" href="#modid-postfix" title="Permanent link">&para;</a></h3>
 <p>In order for your mod to be compatible with other mods it is <em>highly</em> recommend (if not borderline mandatory) to prefix or postfix all of your methods with your modid:</p>
-<div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">someMixinMethod_mymodid</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c1">// or</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">someMixinMethod$mymodid</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">someMixinMethod_mymodid</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1">// or</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">someMixinMethod$mymodid</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span>
 </span></code></pre></div>
 <p>There are some exceptions for <code class="language-java highlight"><span class="nd">@Inject</span></code>s, but in general it doesn't hurt to just add the postfix.</p>
 <h3 id="non-destructive-mixins">Non destructive mixins<a class="headerlink" href="#non-destructive-mixins" title="Permanent link">&para;</a></h3>
-<p>When mixing into a class you would generally want that if another mod the exact same mixin, that both of your mixins would work. Especially if your mixin only works sometimes.</p>
+<p>When mixing into a class you would generally want that, if another mod has the exact same mixin, both of your mixins would work. Especially if your mixin only works sometimes (like being toggleable using a config option).</p>
 <p>I.e. if you want a mixin to color mobs, and your mod decides not to color a mob, another mod should be able to use the exact same mixin (just in their mod) to color those mobs.</p>
 <p>There are some general ground rules for achieving this behaviour: </p>
 <ul>
-<li>Only use <code class="language-java highlight"><span class="n">cir</span><span class="p">.</span><span class="na">setReturnValue</span><span class="p">()</span></code> or <code class="language-java highlight"><span class="n">ci</span><span class="p">.</span><span class="na">cancel</span><span class="p">()</span></code> if your mod decides to act on something. The default action should be to pass through to the next mixin or vanilla by doing nothing.</li>
+<li>Only use <code class="language-java highlight"><span class="n">cir</span><span class="p">.</span><span class="na">setReturnValue</span><span class="p">()</span></code> or <code class="language-java highlight"><span class="n">ci</span><span class="p">.</span><span class="na">cancel</span><span class="p">()</span></code> if your mod decides to act on something. The default action should be to pass through to the next mixin or vanilla by doing nothing (<code class="language-java highlight"><span class="k">return</span></code>ing from your inject).</li>
 <li>Don't use <code class="language-java highlight"><span class="nd">@Redirect</span></code>. Only one mixin can ever use a <code class="language-java highlight"><span class="nd">@Redirect</span></code> on the same call. Only one redirect will ever work, even if your mod does nothing different with a given method call.</li>
 <li>Don't use <code class="language-java highlight"><span class="nd">@Overwrite</span></code> (and don't overwrite without the annotation either, lol). Only one overwrite will ever work, even if your mod does nothing different with a given method call.</li>
 </ul>
@@ -739,7 +745,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 29, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 14, 2024</span>
   </span>
 
     
@@ -806,7 +812,7 @@
     <script id="__config" type="application/json">{"base": "..", "features": ["content.code.annotate", "content.code.copy", "content.tooltips", "navigation.top", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.tracking", "navigation.indexes", "content.action.edit", "search.suggest", "search.share"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.caa56a14.min.js"></script>
+      <script src="../assets/javascripts/bundle.8fd75fb4.min.js"></script>
       
     
   </body>

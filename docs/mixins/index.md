@@ -26,6 +26,15 @@ Mixins need to be in their own package. You should have a dedicated mixin packag
 }
 ```
 
+!!! info
+    Depending on the template you used for your mod, you may have an auto mixin plugin installed already. That kind of plugin automatically finds all mixins that are inside of your mixin package, meaning you can just ignore the `mixin.modid.json`. You still need to put your mixins inside of the correct package, but you don't need to register them explicitly anymore.
+
+    If you have such a plugin, you can find it by looking for something like this:
+    ```json
+      "plugin": "${basePackage}.init.AutoDiscoveryMixinPlugin",
+    ```
+    in your mixin json.
+
 You can also have multiple mixins for the same Minecraft class.
 
 ## Mixin Use Cases
@@ -52,13 +61,13 @@ There are some exceptions for `:::java @Inject`s, but in general it doesn't hurt
 
 ### Non destructive mixins
 
-When mixing into a class you would generally want that if another mod the exact same mixin, that both of your mixins would work. Especially if your mixin only works sometimes.
+When mixing into a class you would generally want that, if another mod has the exact same mixin, both of your mixins would work. Especially if your mixin only works sometimes (like being toggleable using a config option).
 
 I.e. if you want a mixin to color mobs, and your mod decides not to color a mob, another mod should be able to use the exact same mixin (just in their mod) to color those mobs.
 
 There are some general ground rules for achieving this behaviour: 
 
- - Only use `:::java cir.setReturnValue()` or `:::java ci.cancel()` if your mod decides to act on something. The default action should be to pass through to the next mixin or vanilla by doing nothing.
+ - Only use `:::java cir.setReturnValue()` or `:::java ci.cancel()` if your mod decides to act on something. The default action should be to pass through to the next mixin or vanilla by doing nothing (`:::java return`ing from your inject).
  - Don't use `:::java @Redirect`. Only one mixin can ever use a `:::java @Redirect` on the same call. Only one redirect will ever work, even if your mod does nothing different with a given method call.
  - Don't use `:::java @Overwrite` (and don't overwrite without the annotation either, lol). Only one overwrite will ever work, even if your mod does nothing different with a given method call.
 

@@ -11,28 +11,26 @@
       
       
       
-        <link rel="canonical" href="https://moddev.nea.moe/mixins/adding-fields/">
+        <link rel="canonical" href="https://moddev.nea.moe/hotswap/">
       
       
-        <link rel="prev" href="../accessors/">
+        <link rel="prev" href="../mixins/simple-injects/">
       
       
-        <link rel="next" href="../simple-injects/">
       
-      
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.13">
     
     
       
-        <title>Adding new fields and methods - Legacy Modding Wiki by nea89</title>
+        <title>Hotswap - Legacy Modding Wiki by nea89</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.7e359304.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e359304.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -51,7 +49,7 @@
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -60,12 +58,12 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Adding new fields and methods - Legacy Modding Wiki by nea89" >
+        <meta  property="og:title"  content="Hotswap - Legacy Modding Wiki by nea89" >
       
         <meta  property="og:description"  content="My wiki for 1.8.9 Forge modding beginners and experts alike.
 " >
       
-        <meta  property="og:image"  content="https://moddev.nea.moe/assets/images/social/mixins/adding-fields.png" >
+        <meta  property="og:image"  content="https://moddev.nea.moe/assets/images/social/hotswap.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -73,16 +71,16 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://moddev.nea.moe/mixins/adding-fields/" >
+        <meta  property="og:url"  content="https://moddev.nea.moe/hotswap/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Adding new fields and methods - Legacy Modding Wiki by nea89" >
+        <meta  name="twitter:title"  content="Hotswap - Legacy Modding Wiki by nea89" >
       
         <meta  name="twitter:description"  content="My wiki for 1.8.9 Forge modding beginners and experts alike.
 " >
       
-        <meta  name="twitter:image"  content="https://moddev.nea.moe/assets/images/social/mixins/adding-fields.png" >
+        <meta  name="twitter:image"  content="https://moddev.nea.moe/assets/images/social/hotswap.png" >
       
     
     
@@ -105,7 +103,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#adding-new-fields-and-methods" class="md-skip">
+        <a href="#hotswap" class="md-skip">
           Skip to content
         </a>
       
@@ -121,7 +119,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Legacy Modding Wiki by nea89" class="md-header__button md-logo" aria-label="Legacy Modding Wiki by nea89" data-md-component="logo">
+    <a href=".." title="Legacy Modding Wiki by nea89" class="md-header__button md-logo" aria-label="Legacy Modding Wiki by nea89" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -141,7 +139,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Adding new fields and methods
+              Hotswap
             
           </span>
         </div>
@@ -261,7 +259,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Legacy Modding Wiki by nea89" class="md-nav__button md-logo" aria-label="Legacy Modding Wiki by nea89" data-md-component="logo">
+    <a href=".." title="Legacy Modding Wiki by nea89" class="md-nav__button md-logo" aria-label="Legacy Modding Wiki by nea89" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -291,7 +289,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -311,7 +309,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ide-setup/" class="md-nav__link">
+      <a href="../ide-setup/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -331,7 +329,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../events/" class="md-nav__link">
+      <a href="../events/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -351,7 +349,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../commands/" class="md-nav__link">
+      <a href="../commands/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -371,7 +369,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../screens/" class="md-nav__link">
+      <a href="../screens/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -391,7 +389,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../inventories/" class="md-nav__link">
+      <a href="../inventories/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -411,7 +409,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../vanilla/" class="md-nav__link">
+      <a href="../vanilla/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -428,8 +426,6 @@
       
   
   
-    
-  
   
   
     
@@ -448,16 +444,16 @@
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../mixins/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -474,7 +470,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             Mixins
@@ -490,7 +486,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../accessors/" class="md-nav__link">
+      <a href="../mixins/accessors/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -508,19 +504,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../mixins/adding-fields/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -529,7 +516,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -542,7 +528,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../simple-injects/" class="md-nav__link">
+      <a href="../mixins/simple-injects/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -567,10 +553,30 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../hotswap/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Hotswap
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -579,6 +585,62 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dcevm" class="md-nav__link">
+    <span class="md-ellipsis">
+      DCEVM
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-dcevm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using DCEVM
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#caveats" class="md-nav__link">
+    <span class="md-ellipsis">
+      Caveats
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hotswap-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hotswap Agent
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -603,6 +665,50 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dcevm" class="md-nav__link">
+    <span class="md-ellipsis">
+      DCEVM
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-dcevm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using DCEVM
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#caveats" class="md-nav__link">
+    <span class="md-ellipsis">
+      Caveats
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hotswap-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hotswap Agent
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -616,7 +722,7 @@
                   
 
   
-    <a href="https://github.com/nea89o/ModDevWiki/blob/master/docs/mixins/adding-fields.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/nea89o/ModDevWiki/blob/master/docs/hotswap.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -624,52 +730,30 @@
   
 
 
-<h1 id="adding-new-fields-and-methods">Adding new fields and methods<a class="headerlink" href="#adding-new-fields-and-methods" title="Permanent link">&para;</a></h1>
-<p>The next step up is injecting fields and methods into a class. This allows you to store additional state in objects, or can serve as an alternative to accessors for more complex operations that need to access private state of a class.</p>
-<div class="language-java highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nd">@Mixin</span><span class="p">(</span><span class="n">EntityArmorStand</span><span class="p">.</span><span class="na">class</span><span class="p">)</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">InjectCustomField</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">Color</span><span class="w"> </span><span class="n">colorOverride_mymodid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Color</span><span class="p">.</span><span class="na">RED</span><span class="p">;</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setColorOverride_mymodid</span><span class="p">(</span><span class="n">Color</span><span class="w"> </span><span class="n">color</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">        </span><span class="n">colorOverride_mymodid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">color</span><span class="p">;</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Color</span><span class="w"> </span><span class="nf">getColorOverride_mymodid</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">colorOverride_mymodid</span><span class="p">;</span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="p">}</span>
-</span></code></pre></div>
-<p>This mixin is a <code class="language-java highlight"><span class="kd">class</span></code>, like all mixin (except for accessors) are. You can make the class abstract if you want. </p>
-<p>First we add a new field (of course with modid postfix) into every armor stand.</p>
-<p>Then we also add a getter and a setter method for that field.</p>
-<p>Right now we run into a problem. We can't access mixin <code class="language-java highlight"><span class="kd">class</span></code>es directly, so we cannot simply cast the <code>EntityArmorStand</code> into a <code>InjectCustomField</code>. Instead we create an interface (inside of our regular code, not inside of the mixin package) and implement that interface in our mixin class. You can also implement other interfaces this way, not just your own.</p>
-<div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// Inside our regular code. Not in the mixin package</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">ColorFieldAccessor</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">setColorOverride_mymodid</span><span class="p">(</span><span class="n">Color</span><span class="w"> </span><span class="n">color</span><span class="p">);</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="n">Color</span><span class="w"> </span><span class="nf">getColorOverride_mymodid</span><span class="p">();</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">}</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1">// And the updated mixin</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="nd">@Mixin</span><span class="p">(</span><span class="n">EntityArmorStand</span><span class="p">.</span><span class="na">class</span><span class="p">)</span>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">InjectCustomField</span><span class="w"> </span><span class="n">implement</span><span class="w"> </span><span class="n">ColorFieldAccessor</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="n">Color</span><span class="w"> </span><span class="n">colorOverride_mymodid</span><span class="p">;</span>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="nd">@Override</span>
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setColorOverride_mymodid</span><span class="p">(</span><span class="n">Color</span><span class="w"> </span><span class="n">color</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">        </span><span class="n">colorOverride_mymodid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">color</span><span class="p">;</span>
-</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>
-</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">    </span><span class="nd">@Override</span>
-</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Color</span><span class="w"> </span><span class="nf">getColorOverride_mymodid</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">colorOverride_mymodid</span><span class="p">;</span>
-</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="p">}</span>
-</span></code></pre></div>
-<p>Now we can just cast any instance of <code>EntityArmorStand</code> to <code>ColorFieldAccessor</code>:</p>
-<div class="language-java highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">Color</span><span class="w"> </span><span class="nf">getColorOverrideForArmorStand</span><span class="p">(</span><span class="n">EntityArmorStand</span><span class="w"> </span><span class="n">armorStand</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">((</span><span class="n">ColorFieldAccessor</span><span class="p">)</span><span class="w"> </span><span class="n">armorStand</span><span class="p">).</span><span class="na">getColorOverride_mymodid</span><span class="p">();</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">}</span>
-</span></code></pre></div>
+<h1 id="hotswap">Hotswap<a class="headerlink" href="#hotswap" title="Permanent link">&para;</a></h1>
+<p>When talking about programming, hotswap refers to switching out code at runtime, without restarting your program.</p>
+<p>By default, Java only has this capability in a very limited fashion, and this only works inside of a development environment.</p>
+<h2 id="dcevm">DCEVM<a class="headerlink" href="#dcevm" title="Permanent link">&para;</a></h2>
+<p>DCEVM is a custom JVM that allows you to do a lot more hotswapping. Not only can you change method bodies, but also add new methods, remove methods, add new fields and classes, and more.</p>
+<p>To install DCEVM, first download the installer from <a href="https://dcevm.github.io/">https://dcevm.github.io/</a>. Get the installer for the latest Java 8 version (181). The DCEVM installer modifies an existing JVM, and does not work on its own.</p>
+<p>Next you need to download <a href="https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html">the corresponding JVM itself</a>. For versions as old as 1.8u181 you might need to create an Oracle account. Newer versions of Java <em>will not work</em>.</p>
+<p>Once you got the normal 1.8u181 JVM installed, you can launch the DCEVM installer you downloaded earlier. You should use another version of Java to launch the JAR, otherwise you might get issues on windows. DCEVM will prompt you where to install itself to. Choose your 1.8u181 installation and <strong>replace the JVM</strong>. Do <strong>not</strong> install as alt VM.</p>
+<p>Once that is done (which should be fairly quick), you can exit the installer.</p>
+<h2 id="using-dcevm">Using DCEVM<a class="headerlink" href="#using-dcevm" title="Permanent link">&para;</a></h2>
+<p>In order to use DCEVM (or any other hotswap enabled JVM), you need to launch using that JVM. Edit your run configuration in your IDE. Note that you don't need to change the JVM for your entire Module, only for your run configuration. You may also need to manually add the JVM in IntelliJ by choosing "Select alternative JVM" (this is not the same as the alt VM from DCEVM, that one is unrelated).</p>
+<p>Then you need to launch in debug mode. You can do that by selecting the <img alt="🪲" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/1fab2.svg" title=":beetle:" /> next to your normal <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8 5.14v14l11-7-11-7Z"/></svg></span> run button.</p>
+<p>Once your game is started, you can reload your changes by pressing <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-f9">F9</kbd></span> (or using the build project keybind). Once your project is built, you should automatically get a prompt to reload your changes. If not, you might need to change "reload classes after compilation" in the IntelliJ settings.</p>
+<h2 id="caveats">Caveats<a class="headerlink" href="#caveats" title="Permanent link">&para;</a></h2>
+<p>Even with DCEVM you cannot change all the things. Initialization code is not run again, so thinks like event listers, registered commands, mixins and similar configuration that is done once break. Even some things like static fields don't get properly initialized. Sometimes changes cannot be properly detected and all classes get reloaded, resulting in most of your event listeners being unregistered. There isn't much that can be done in those situations. Watch your IntelliJ notifications to see how many classes are being reloaded and restart if you see numbers that are too big or too small.</p>
+<h2 id="hotswap-agent">Hotswap Agent<a class="headerlink" href="#hotswap-agent" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is an advanced topic, and this section is incomplete. You probably don't need to use hotswap agent and it can be quite a bit confusing to set up.</p>
+</div>
+<p>Hotswap Agent is a software that is run on top of DCEVM that allows for additional reloading of classes. It adds some built-in functionality for things like running static initializers, reloading logging configurations and a lot of other open source frameworks reloading.</p>
+<p>For most people installing hotswap agent is easiest by using the IntelliJ plugin. Once the plugin is installed, go into your global settings, into "Tools &gt; Hotswap" and check the checkbox next to your run configuration.</p>
+<p>Check your logs for <code>Loading Hotswap agent {VERSION} - unlimited runtime class redefinition.</code> to see if hotswap agent is running. If you don't see that line, you probably only run DCEVM.</p>
+<p>By default hotswap agent does not do anything about forge. You can check out <a href="https://github.com/nea89o/hotswapagent-forge/">hotswapagent-forge</a> to receive runtime information about class reloads in forge.</p>
 
 
 
@@ -692,7 +776,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 29, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 6, 2024</span>
   </span>
 
     
@@ -702,7 +786,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 29, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 6, 2024</span>
   </span>
 
     
@@ -756,10 +840,10 @@
       <div class="md-progress" data-md-component="progress" role="progressbar"></div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate", "content.code.copy", "content.tooltips", "navigation.top", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.tracking", "navigation.indexes", "content.action.edit", "search.suggest", "search.share"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.annotate", "content.code.copy", "content.tooltips", "navigation.top", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.tracking", "navigation.indexes", "content.action.edit", "search.suggest", "search.share"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.c8d2eff1.min.js"></script>
+      <script src="../assets/javascripts/bundle.c8d2eff1.min.js"></script>
       
     
   </body>

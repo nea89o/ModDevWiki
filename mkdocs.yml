@@ -21,6 +21,7 @@ nav:
     - mixins/accessors.md
     - mixins/adding-fields.md
     - mixins/simple-injects.md
+  - hotswap.md
 
 
 validation:

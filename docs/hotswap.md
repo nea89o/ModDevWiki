@@ -26,7 +26,7 @@ Once your game is started, you can reload your changes by pressing ++ctrl+f9++ (
 
 ## Caveats
 
-Even with DCEVM you cannot change all the things. Initialization code is not run again, so thinks like event listers, registered commands, mixins and similar configuration that is done once break. Even some things like static fields don't get properly initialized. Sometimes changes cannot be properly detected and all classes get reloaded, resulting in most of your event listeners being unregistered. There isn't much that can be done in those situations. Watch your IntelliJ notifications to see how many classes are being reloaded and restart if you see numbers that are too big or too small.
+Even with DCEVM you cannot change all the things. Initialization code is not run again, so things like event listers, registered commands, mixins and similar configuration that is done once will not be updated. Even some things like static fields don't get properly initialized. Sometimes changes cannot be properly detected and all classes get reloaded, resulting in most of your event listeners being unregistered. There isn't much that can be done in those situations. Watch your IntelliJ notifications to see how many classes are being reloaded and restart if you see numbers that are too big or too small (0).
 
 ## Hotswap Agent
 

@@ -744,7 +744,7 @@
 <p>Then you need to launch in debug mode. You can do that by selecting the <img alt="🪲" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/1fab2.svg" title=":beetle:" /> next to your normal <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8 5.14v14l11-7-11-7Z"/></svg></span> run button.</p>
 <p>Once your game is started, you can reload your changes by pressing <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-f9">F9</kbd></span> (or using the build project keybind). Once your project is built, you should automatically get a prompt to reload your changes. If not, you might need to change "reload classes after compilation" in the IntelliJ settings.</p>
 <h2 id="caveats">Caveats<a class="headerlink" href="#caveats" title="Permanent link">&para;</a></h2>
-<p>Even with DCEVM you cannot change all the things. Initialization code is not run again, so thinks like event listers, registered commands, mixins and similar configuration that is done once break. Even some things like static fields don't get properly initialized. Sometimes changes cannot be properly detected and all classes get reloaded, resulting in most of your event listeners being unregistered. There isn't much that can be done in those situations. Watch your IntelliJ notifications to see how many classes are being reloaded and restart if you see numbers that are too big or too small.</p>
+<p>Even with DCEVM you cannot change all the things. Initialization code is not run again, so things like event listers, registered commands, mixins and similar configuration that is done once will not be updated. Even some things like static fields don't get properly initialized. Sometimes changes cannot be properly detected and all classes get reloaded, resulting in most of your event listeners being unregistered. There isn't much that can be done in those situations. Watch your IntelliJ notifications to see how many classes are being reloaded and restart if you see numbers that are too big or too small (0).</p>
 <h2 id="hotswap-agent">Hotswap Agent<a class="headerlink" href="#hotswap-agent" title="Permanent link">&para;</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -776,7 +776,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 6, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 11, 2024</span>
   </span>
 
     

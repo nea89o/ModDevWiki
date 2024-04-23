@@ -1,3 +1,4 @@
 mkdocs-material[imaging]
 mkdocs-git-revision-date-localized-plugin
 mkdocs-git-committers-plugin-2
+material-plausible-plugin

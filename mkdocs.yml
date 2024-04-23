@@ -67,10 +67,16 @@ theme:
 plugins:
   - search
   - social
+  - material-plausible
   - git-revision-date-localized:
       enable_creation_date: true
       fallback_to_build_date: true
 
+extra:
+  analytics:
+    provider: plausible
+    domain: moddev.nea.moe
+    src: "https://pla.nea.moe/js/plausible.js"
 
 markdown_extensions:
   - abbr

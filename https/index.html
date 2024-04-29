@@ -1,0 +1,1312 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="My wiki for 1.8.9 Forge modding beginners and experts alike.
+">
+      
+      
+      
+        <link rel="canonical" href="https://moddev.nea.moe/https/">
+      
+      
+        <link rel="prev" href="../hotswap/">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.20">
+    
+    
+      
+        <title>Web Requests and HTTPS - Legacy Modding Wiki by nea89</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.66ac8b77.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  <script
+  defer
+  data-domain="moddev.nea.moe"
+  src="https://pla.nea.moe/js/plausible.js"
+></script>
+
+<script>
+  window.plausible = window.plausible || function () { (window.plausible.q = window.plausible.q || []).push(arguments) };
+
+  /* Register event handlers after documented loaded */
+  document.addEventListener("DOMContentLoaded", function () {
+    /* Set up search tracking */
+    if (document.forms.search) {
+      var query = document.forms.search.query;
+      query.addEventListener("blur", function() {
+        if (this.value) plausible("Search", { props: { search_term: this.value } });
+      })
+    }
+
+    /* Set up feedback, i.e. "Was this page helpful?" */
+    document$.subscribe(function () {
+      var feedback = document.forms.feedback;
+      if (typeof feedback === "undefined") return;
+
+      /* Send feedback to Plausible */
+      for (var button of feedback.querySelectorAll("[type=submit]")) {
+        button.addEventListener("click", function (ev) {
+          ev.preventDefault();
+
+          var page = document.location.pathname;
+          var value = this.getAttribute("data-md-value");
+          console.log("[feedback] User clicked", { value });
+          plausible(`Feedback: ${value}`);
+
+          /* Disable form and show note, if given */
+          feedback.firstElementChild.disabled = true;
+          var note = feedback.querySelector(".md-feedback__note [data-md-value='" + value + "']");
+          if (note) note.hidden = false;
+        })
+
+        /* Show feedback */
+        feedback.hidden = false;
+      }
+    });
+  });
+</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Web Requests and HTTPS - Legacy Modding Wiki by nea89" >
+      
+        <meta  property="og:description"  content="My wiki for 1.8.9 Forge modding beginners and experts alike.
+" >
+      
+        <meta  property="og:image"  content="https://moddev.nea.moe/assets/images/social/https.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://moddev.nea.moe/https/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Web Requests and HTTPS - Legacy Modding Wiki by nea89" >
+      
+        <meta  name="twitter:description"  content="My wiki for 1.8.9 Forge modding beginners and experts alike.
+" >
+      
+        <meta  name="twitter:image"  content="https://moddev.nea.moe/assets/images/social/https.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="lime" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#web-requests-and-https" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Legacy Modding Wiki by nea89" class="md-header__button md-logo" aria-label="Legacy Modding Wiki by nea89" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Legacy Modding Wiki by nea89
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Web Requests and HTTPS
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="lime" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="light-blue" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/nea89o/ModDevWiki" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    nea89o/ModDevWiki
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Legacy Modding Wiki by nea89" class="md-nav__button md-logo" aria-label="Legacy Modding Wiki by nea89" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Legacy Modding Wiki by nea89
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/nea89o/ModDevWiki" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    nea89o/ModDevWiki
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome to nea89s Modding Wiki
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ide-setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Setting up
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../events/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Events in Forge
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commands/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Creating your first command
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../screens/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Screens and You
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../inventories/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inspecting Inventories
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vanilla/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Looking through Vanilla Code
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../mixins/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Mixins
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Mixins
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mixins/accessors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Accessor Mixins
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mixins/adding-fields/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adding new fields and methods
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mixins/simple-injects/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Simple Injects
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hotswap/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hotswap
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Web Requests and HTTPS
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Web Requests and HTTPS
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#our-subject-of-study" class="md-nav__link">
+    <span class="md-ellipsis">
+      Our subject of study
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#threads" class="md-nav__link">
+    <span class="md-ellipsis">
+      Threads
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Threads">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#thread-safety" class="md-nav__link">
+    <span class="md-ellipsis">
+      Thread safety
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#synchronization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Synchronization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#callbacks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Callbacks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#more-on-threading" class="md-nav__link">
+    <span class="md-ellipsis">
+      More on threading
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ssl" class="md-nav__link">
+    <span class="md-ellipsis">
+      SSL
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SSL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#certificates-and-how-does-ssl-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      Certificates and how does SSL work
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#root-cas-in-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      Root CAs in Java
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Root CAs in Java">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#avoiding-the-problem-altogether" class="md-nav__link">
+    <span class="md-ellipsis">
+      Avoiding the problem altogether
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#false-hope" class="md-nav__link">
+    <span class="md-ellipsis">
+      False hope
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bringing-your-own-certificates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bringing your own certificates
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#our-subject-of-study" class="md-nav__link">
+    <span class="md-ellipsis">
+      Our subject of study
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#threads" class="md-nav__link">
+    <span class="md-ellipsis">
+      Threads
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Threads">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#thread-safety" class="md-nav__link">
+    <span class="md-ellipsis">
+      Thread safety
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#synchronization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Synchronization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#callbacks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Callbacks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#more-on-threading" class="md-nav__link">
+    <span class="md-ellipsis">
+      More on threading
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ssl" class="md-nav__link">
+    <span class="md-ellipsis">
+      SSL
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SSL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#certificates-and-how-does-ssl-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      Certificates and how does SSL work
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#root-cas-in-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      Root CAs in Java
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Root CAs in Java">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#avoiding-the-problem-altogether" class="md-nav__link">
+    <span class="md-ellipsis">
+      Avoiding the problem altogether
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#false-hope" class="md-nav__link">
+    <span class="md-ellipsis">
+      False hope
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bringing-your-own-certificates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bringing your own certificates
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/nea89o/ModDevWiki/blob/master/docs/https.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="web-requests-and-https">Web Requests and HTTPS<a class="headerlink" href="#web-requests-and-https" title="Permanent link">&para;</a></h1>
+<p>Sooner or later you might want to interact with the Web from your mod.</p>
+<p>Normal methods of making HTTP requests work, this is still Java after all.
+There are however some pitfalls.</p>
+<h2 id="our-subject-of-study">Our subject of study<a class="headerlink" href="#our-subject-of-study" title="Permanent link">&para;</a></h2>
+<p>Think of a command like this:</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nd">@Override</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">processCommand</span><span class="p">(</span><span class="n">ICommandSender</span><span class="w"> </span><span class="n">sender</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="n">URL</span><span class="w"> </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">URL</span><span class="p">(</span><span class="s">&quot;https://some-leaderboard-api.nea.moe/getleaderboardposition?username=&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">);</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="n">JsonObject</span><span class="w"> </span><span class="n">apiResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gson</span><span class="p">.</span><span class="na">fromJson</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="na">openStream</span><span class="p">(),</span><span class="w"> </span><span class="n">JsonObject</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="n">sender</span><span class="p">.</span><span class="na">addChatMessage</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ChatComponentText</span><span class="p">(</span><span class="s">&quot;§a&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; is rank #&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">apiResponse</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&quot;rank&quot;</span><span class="p">).</span><span class="na">getAsInt</span><span class="p">()));</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>This will work, but it has a few problems. There are a few smaller problems (like not checking for missing arguments, not handling http failures, not handling invalid JSON), but the one big problem is blocking requests.</p>
+<p>Whenever you make an HTTP request, it will take some time to complete that request. During that time other code is blocked from running, since it needs to wait on data from that HTTP request. In this example <code class="language-java highlight"><span class="n">gson</span><span class="p">.</span><span class="na">fromJson</span><span class="p">(...)</span></code> will wait until the HTTP request is completed, since the returned JsonObject needs that data.</p>
+<p>This is an issue, since Minecraft is waiting on your command to complete before it can continue working, meaning while that HTTP request is running, you cannot render any new frames, cannot handle any input, and you cannot handle any of the servers packets, meaning you can even time out on longer requests. The solution to this is threads.</p>
+<h2 id="threads">Threads<a class="headerlink" href="#threads" title="Permanent link">&para;</a></h2>
+<p>A thread allows you to basically create another mini program inside of your existing program. A thread can run at the same time as all your other code, but because it is a thread instead of another program, it can access some of the same data.</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nd">@Override</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">processCommand</span><span class="p">(</span><span class="n">ICommandSender</span><span class="w"> </span><span class="n">sender</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="n">Thread</span><span class="w"> </span><span class="n">thread</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Thread</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">      </span><span class="n">URL</span><span class="w"> </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">URL</span><span class="p">(</span><span class="s">&quot;https://some-leaderboard-api.nea.moe/getleaderboardposition?username=&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">);</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">      </span><span class="n">JsonObject</span><span class="w"> </span><span class="n">apiResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gson</span><span class="p">.</span><span class="na">fromJson</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="na">openStream</span><span class="p">(),</span><span class="w"> </span><span class="n">JsonObject</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">      </span><span class="n">sender</span><span class="p">.</span><span class="na">addChatMessage</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ChatComponentText</span><span class="p">(</span><span class="s">&quot;§a&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; is rank #&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">apiResponse</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&quot;rank&quot;</span><span class="p">).</span><span class="na">getAsInt</span><span class="p">()));</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">      </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">  </span><span class="p">});</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">  </span><span class="n">thread</span><span class="p">.</span><span class="na">start</span><span class="p">();</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>In Java, the <code class="language-java highlight"><span class="k">new</span><span class="w"> </span><span class="n">Thread</span><span class="p">(...)</span></code> constructor allows you to create a new thread. You pass in a lambda that gets run inside that new <code>Thread</code> as soon as you call <code class="language-java highlight"><span class="n">thread</span><span class="p">.</span><span class="na">start</span><span class="p">()</span></code>.</p>
+<p>Running this command now no longer blocks your game. All the processing and waiting of the network request is done on another <code>Thread</code>, so the main Minecraft thread can run freely.</p>
+<h3 id="thread-safety">Thread safety<a class="headerlink" href="#thread-safety" title="Permanent link">&para;</a></h3>
+<p>Threads aren't all sunshines and roses however. One thing you might notice is your game occasionally crashing after you run your command. You get a <code>ConcurrentModificationException</code> from the chat window. Maybe you just notice some inconsistent data that comes from a network request. All this comes from one basic issue. Two threads can run at the same time, therefore two threads can access and modify the same data at the same time.</p>
+<p>Let's look at a simpler example. In this code snippet the two functions <code>threadA</code> and <code>threadB</code> are run by different threads at the same time.</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">String</span><span class="w"> </span><span class="n">someSharedVariable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;hello&quot;</span><span class="p">;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kt">void</span><span class="w"> </span><span class="nf">threadA</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="n">someSharedVariable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">doCalculation</span><span class="p">(</span><span class="n">someSharedVariable</span><span class="p">);</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">}</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="kt">void</span><span class="w"> </span><span class="nf">threadB</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">  </span><span class="n">someSharedVariable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">doCalculation</span><span class="p">(</span><span class="n">someSharedVariable</span><span class="p">);</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>If we run <code>threadA</code> and <code>threadB</code> in a conventional program, we would expect <code>doCalculation</code> to be called twice:</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">runInConventionalProgram</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="n">threadA</span><span class="p">();</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="n">threadB</span><span class="p">();</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="c1">// This above is equivalent to</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span><span class="n">someSharedVariable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">doCalculation</span><span class="p">(</span><span class="n">doCalculation</span><span class="p">(</span><span class="n">someSharedVariable</span><span class="p">));</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>However, ran with threads, the statements intermingle. <code>threadA</code> and <code>threadB</code> might both access the shared variable at the start, getting the initial value. Both apply the calculation to that same initial value. <code>threadB</code> finishes first and saves the calculation result in the variable. <code>threadA</code> finishes second and overwrites <code>threadB</code>s calculations with its new result. This becomes even more complicated when different threads do different calculations.</p>
+<p>In order to make threads work, we need something called synchronization. Only one thread can access the same data at the same time, or things get problematic.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Keep in mind that this does not just apply to direct variable access. Calling a function which then later on accesses a variable or a field in a variable will still cause the same issues.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There are of course exceptions. Some classes and objects have internal synchronization built in, specifically built to support multiple threads accessing them, but most classes will break if you access or modify them from multiple threads at the same time. In fact even simple variable access can (silently) break, as demonstrated above.</p>
+</div>
+<h3 id="synchronization">Synchronization<a class="headerlink" href="#synchronization" title="Permanent link">&para;</a></h3>
+<p>Synchronization blocks a thread while another thread is accessing the same data as it. This is not done automatically, but instead needs to be explicitly specified. Synchronizing is done on an object (not on the name of that object, but that exact instance). If you are inside of a <code class="language-java highlight"><span class="kd">synchronized</span><span class="w"> </span><span class="p">(</span><span class="n">someObject</span><span class="p">)</span></code> block you are said to be "holding <em>that objects</em> lock".</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">Object</span><span class="w"> </span><span class="n">lockObject</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Object</span><span class="p">();</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">String</span><span class="w"> </span><span class="n">someSharedVariable</span><span class="p">;</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="kt">void</span><span class="w"> </span><span class="nf">threadA</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">  </span><span class="n">String</span><span class="w"> </span><span class="n">localVariable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">doSomeCalculation</span><span class="p">();</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">  </span><span class="n">doSomeExpensiveAndSlowNetworkCall</span><span class="p">();</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">  </span><span class="kd">synchronized</span><span class="w"> </span><span class="p">(</span><span class="n">lockObject</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">    </span><span class="n">someSharedVariable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">doSomeCalculationWithTheSharedVariable</span><span class="p">(</span><span class="n">localVariable</span><span class="p">,</span><span class="w"> </span><span class="n">someSharedVariable</span><span class="p">);</span><span class="w">  </span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">  </span><span class="n">doSomeMoreCalculation</span><span class="p">(</span><span class="n">localVariable</span><span class="p">);</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>A few notes:</p>
+<ul>
+<li>the first <code>doSomeCalculation</code> call is not synchronized. If you access <code>someSharedVariable</code> here there will be no guarantees over other threads accessing it.</li>
+<li>
+<p>the <code class="language-java highlight"><span class="kd">synchronized</span></code> block needs an argument. In this case i pass in <code>lockObject</code>, <em>not</em> <code>someSharedVariable</code>. This is because <code class="language-java highlight"><span class="kd">synchronized</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code> will only work if <code>x</code> is never changed. You can change things <em>inside</em> of the locked variable (so <code>x.b = 10;</code> is okay), but replacing the entire variable with a new one (like we are doing with <code class="language-java highlight"><span class="n">someSharedVariable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="cm">/*...*/</span></code>) would mean that we are synchronizing against a completely different object, which will therefore not be synchronized with other threads.
+   If you want to synchronize a variable across threads that you want to change out entirely, you should have a second lock object you never change.</p>
+</li>
+<li>
+<p>Once i finish the synchronized block i should no longer access the <code>someSharedVariable</code>. After i end that block, other threads can access the object.</p>
+</li>
+<li>I do the expensive operations <em>outside</em> of the <code class="language-java highlight"><span class="kd">synchronized</span></code> block. If you hold the lock on an object all other threads that want to lock on the same object will wait, so doing a network request (for example) while holding a lock will result in those other threads waiting, which is exactly the thing we wanted to avoid by using threads.</li>
+<li>I lock on a variable that i made up. <code class="language-java highlight"><span class="kd">synchronized</span></code> blocks only ever matter if <em>all</em> the code accessing that variable use those same blocks. If other code just accesses that variable without synchronizing first, then your synchronization does not matter at all.</li>
+</ul>
+<p>Synchronization is a necessary tool, and often the most efficient/performant way of doing things, but it is quite complicated, and it does not work if you want to access Minecrafts variables, since Minecraft does not do any <code>synchronized</code> blocks itself.</p>
+<p>So if synchronization does not work or is too complicated, we can instead do something else: Just work on one thread.</p>
+<h3 id="callbacks">Callbacks<a class="headerlink" href="#callbacks" title="Permanent link">&para;</a></h3>
+<p>Expensive calculations need to be done on other threads. Stalling out Minecraft every time you want to look up some bazaar data in the background is not okay if it kicks you out of whatever server you are on, and also freezes the entire game. But since most things you want to do with network requests end up with displaying some version of that newly gotten info to the player, we also need to get back info into the main thread. This can be done either by synchronizing on a variable with the reply and waiting in a (synchronized) tick event to check for that variables contents, or you can use callbacks.</p>
+<p>Minecraft has a function called <code class="language-java highlight"><span class="n">Minecraft</span><span class="p">.</span><span class="na">getMinecraft</span><span class="p">().</span><span class="na">addScheduledTask</span><span class="p">()</span></code>. This function takes in a <code class="language-java highlight"><span class="n">Runnable</span></code>, which is a lambda of the form <code class="language-java highlight"><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{}</span></code>. This lambda will be called on the main thread in the next tick. You can call this function from your thread in order to call Minecrafts functions safely. Keep in mind that this new code will run on the Minecraft main thread, meaning that you should not access data from your other thread, unless you know that other thread won't change the variable anymore, or are properly synchronizing it.</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nd">@Override</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">processCommand</span><span class="p">(</span><span class="n">ICommandSender</span><span class="w"> </span><span class="n">sender</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="n">Thread</span><span class="w"> </span><span class="n">thread</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Thread</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">      </span><span class="n">URL</span><span class="w"> </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">URL</span><span class="p">(</span><span class="s">&quot;https://some-leaderboard-api.nea.moe/getleaderboardposition?username=&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">);</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">      </span><span class="n">JsonObject</span><span class="w"> </span><span class="n">apiResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gson</span><span class="p">.</span><span class="na">fromJson</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="na">openStream</span><span class="p">(),</span><span class="w"> </span><span class="n">JsonObject</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">      </span><span class="n">Minecraft</span><span class="p">.</span><span class="na">getMinecraft</span><span class="p">().</span><span class="na">addScheduledTask</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">        </span><span class="n">sender</span><span class="p">.</span><span class="na">addChatMessage</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ChatComponentText</span><span class="p">(</span><span class="s">&quot;§a&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; is rank #&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">apiResponse</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&quot;rank&quot;</span><span class="p">).</span><span class="na">getAsInt</span><span class="p">()));</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">      </span><span class="p">});</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">      </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">  </span><span class="p">});</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">  </span><span class="n">thread</span><span class="p">.</span><span class="na">start</span><span class="p">();</span>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>In this example all minecraft code (aside from <code>addScheduledTask</code>, which is specifically designed to work when accessed from another thread) is only accessed from the main minecraft thread, but all of our calculation is done inside of a worker thread.</p>
+<h3 id="more-on-threading">More on threading<a class="headerlink" href="#more-on-threading" title="Permanent link">&para;</a></h3>
+<p>Threads are necessary, but they are also clumsy and hard to work with. There are ways to mitigate this, using <code>CompletableFuture</code> and utility methods and events. There are also things about threading that i am skimming over here. There are easier to synchronize primitives (for example <code>List</code>s that automatically synchronize) and thread pools, but those are all complicated and nuanced and also not Minecraft specific. Threading is a really complex topic, and even my very basic overview here probably has some mistakes already, so i urge you to seek out other tutorials on it, if you plan on doing complicated threading work.</p>
+<h2 id="ssl">SSL<a class="headerlink" href="#ssl" title="Permanent link">&para;</a></h2>
+<p>After all that ordeal with threading you probably are hoping that you are done, but sadly there is another problem. Running your code inside of your development environment is fine, but some of your users report issues when running the game normally. After a while of debugging you find the root cause: Java somehow thinks that the https server has an invalid certificate.</p>
+<h3 id="certificates-and-how-does-ssl-work">Certificates and how does SSL work<a class="headerlink" href="#certificates-and-how-does-ssl-work" title="Permanent link">&para;</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This section explains how SSL works and why we need to do what we need to do. If you just want to fix SSL issues, you can skip this rather technical section.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This section intentionally oversimplifies things such as key exchanges, signing vs encryption, private/public key, TLS handshakes, certificate chains and more in order to provide some limited understanding (as is applicable to a minecraft mod), without requiring much effort.</p>
+</div>
+<p>HTTPS works using something called TLS, which is a newer form of SSL. For most purposes (including this text) SSL and TLS can be used interchangibly. SSL encrypts everything inside of your HTTPS request in accordance with an SSL public key so that only the corresponding SSL private key can decrypt the data. This works both ways, so both sides of the exchange have a private and a public key that they use so that only the other person can read any of the data in transit.</p>
+<pre class="mermaid"><code>sequenceDiagram
+  My Mod -&gt;&gt; My Server: Here is my SSL public key. Please respond back with your SSL public key.
+  My Server --&gt;&gt; My Mod: Here is my SSL public key.
+  My Mod --&gt;&gt; My Server: Here is an HTTP request.
+  My Server --&gt;&gt; My Mod: Here is an HTTP response.</code></pre>
+<p>Solid lines are unencrypted, dashed lines are encrypted. <a href="https://en.wikipedia.org/wiki/TLS_handshake">Note that this diagram is intentionally oversimplified and <strong>wrong</strong></a>.</p>
+<p>One problem you might notice is that even tho all the interesting communication is encrypted, nothing prevents an evil actor to just pretend to be the server, intercepting our first message and replacing it with their own fake SSL public key. This way they can read all of our messages. One way to fix this is using certificates.</p>
+<p>In our client we have a list of so called "root certificate authorities" (root CA). These are essentially just public keys that we <em>trust</em> to be good. Since we don't want to store a public key for every website, we just store those few root CAs. Then, in addition to their public key, every website we visit also sends along a signature for their public key, essentially an encryption using the root CAs public key that can cryptographically only be done by someone with that root CAs private key (some signature schemes operate differently, but the basic idea is the same. You have some way of mathematically proving that the certificate was signed in some way by someone in your root CA list).</p>
+<pre class="mermaid"><code>sequenceDiagram
+  My Mod -&gt;&gt; My Server: Here is my SSL public key. Please respond back with your SSL public key.
+  My Server --&gt;&gt; My Mod: Here is my SSL public key.
+  Note over My Mod: Here we verify the servers SSL public key against our root CA list
+  My Mod --&gt;&gt; My Server: Here is an HTTP request.
+  My Server --&gt;&gt; My Mod: Here is an HTTP response.</code></pre>
+<p>Obviously an evil root CA can still be a problem, but a lot of attacks can be prevented this way.</p>
+<h3 id="root-cas-in-java">Root CAs in Java<a class="headerlink" href="#root-cas-in-java" title="Permanent link">&para;</a></h3>
+<p>Java comes with a list of root CAs (certificate authority), basically a list of signatures that can be used to verify if you want to trust a website. Whenever you make an HTTPS request Java checks the connection against that list of CAs, and throws an error if it cannot trust that website. By default Java is fairly up to date and adds new root CAs whenever they become officially/widely accepted.</p>
+<p>However, the java version used by the default minecraft launcher is quite old. Java version 1.8u51 to be exact. Your IDE probably uses a newer version of Java, probably something around ~1.8u400. In between those many versions new root CAs get added, so it is quite easy to not notice if a website will not be trusted by the normal minecraft launcher.</p>
+<p>Now how do we fix this?</p>
+<h4 id="avoiding-the-problem-altogether">Avoiding the problem altogether<a class="headerlink" href="#avoiding-the-problem-altogether" title="Permanent link">&para;</a></h4>
+<p>There are two easy (almost code less) fixes. Use an older certificate authority that has been around for a while, or use a more modern Java version. Note that a lot of those older CAs may charge a fee, and even when using an old provider, there is no guarantee that they will give you a certificate signed with one of their older root CAs. Maybe you also want to access a website you don't have access to (like GitHub or the hypixel api). Also getting all your users to change the default minecraft java installation is a challenge so obvious, I hope I don't have to explain to anyone.</p>
+<h4 id="false-hope">False hope<a class="headerlink" href="#false-hope" title="Permanent link">&para;</a></h4>
+<p>There are two ways that I see often used to fix this problem. Just using HTTP and disabling the CA trusting mechanism altogether. Both of them allow anyone to access all of the data that is being transmitted. For something simple as bazaar data that might be fine, but even if there is nothing private or secretive you need to be careful. If (for example) you are disabling HTTPS for your update checker, it is quite easy for a malicious actor to inject a fake update, making them download a potentially malicious binary that will be executed on the next startup.</p>
+<p>In fact disabling HTTPS or the CA root mechanisms is considered so bad of a practice that all major browsers have a mechanism called <a href="https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security">HSTS</a> which allows websites to prevent accessing them via HTTP.</p>
+<p>I will call out some mods here that I know are doing this.</p>
+<ul>
+<li><a href="https://github.com/PartlySaneStudios/partly-sane-skies/blob/4d4eb0f30d52e74762439b2114f09c13af166819/src/main/kotlin/me/partlysanestudios/partlysaneskies/data/api/Request.kt#L116">Partly Sane Skies</a></li>
+<li><a href="https://github.com/MrFast-js/Skyblock-Tweaks/blob/0ff4f55a268a875645848958d07f910a480a5736/src/main/java/mrfast/sbt/utils/NetworkUtils.kt#L33">Skyblock-Tweaks</a></li>
+<li><a href="https://github.com/symt/BazaarNotifier/blob/988b2728538c45aba6ca3f240c3c718b8608fd12/src/main/java/dev/meyi/bn/utilities/Utils.java#L43-L59">Bazaar Notifier</a></li>
+<li>and many more...</li>
+</ul>
+<p>The mods listed here only use them for minor requests, but some others out there use them for their updater notifications, potentially allowing attackers to run arbitrary code on their users computer. If you would like to add or remove from that list, feel free to <a href="https://github.com/nea89o/modDevWiki/issues/new?title=[SSL%20Violator%20List]">make an issue</a>.</p>
+<p>Some mods go even further beyond and not only use those broken trust factories for their own mods request, but also set them as the global default, making the requests done by all other mods also be insecure.</p>
+<p>For obvious reasons, I won't tell you how to set up these custom trust chain checkers and I am urging you to never use HTTP over HTTPS for anything remotely sensitive.</p>
+<h4 id="bringing-your-own-certificates">Bringing your own certificates<a class="headerlink" href="#bringing-your-own-certificates" title="Permanent link">&para;</a></h4>
+<p>The nice thing about Java is that, while it does not have all the modern certificates built in, you can just ship your own. This is a bit involved, but it allows you to make HTTPS requests seamlessly and without security issues. You can even add your own root CA, in case you don't want to use any of the existing root CAs (but I won't teach you how to do that here).</p>
+<p>Generally when using Java, you store your certificates inside of a key store. So let's first create our custom key store. If possible, you should be using an old JDK (1.8u51) for this. You will also need a new JDK that you want to take the keys from. The JKS default formats have changed a bit throughout the years, and while they all should roughly be compatible with each other, it helps if we create the file with an old JDK.</p>
+<p>Every keystore in java needs a password. By default the password is <code>changeit</code> whenever you download a JDK. Don't change that password.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>YOUR_OLD_JDK/bin/keytool<span class="w"> </span>-importkeystore<span class="w"> </span>-srckeystore<span class="w"> </span>YOUR_NEW_JDK/lib/security/cacerts<span class="w"> </span>-destkeystore<span class="w"> </span>mykeystore.jks
+</span></code></pre></div>
+<p>This will prompt you for a password for your destination keystore. You should just keep it as "changeit", since that is the default for all java keystores that do not store secret information. This new <code>mykeystore.jks</code> file now needs to be added to your <code>src/main/resources</code> folder. Add it to that folder directly, instead of the <code>assets</code> folder like with other resources. Feel also free to rename it to something else including your mod id.</p>
+<p>Now we come to using this certificate in your code. First you need to load your new keystore: </p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kd">static</span><span class="w"> </span><span class="n">SSLContext</span><span class="w"> </span><span class="n">ctx</span><span class="p">;</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kd">static</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="n">KeyStore</span><span class="w"> </span><span class="n">myKeyStore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">KeyStore</span><span class="p">.</span><span class="na">getInstance</span><span class="p">(</span><span class="s">&quot;JKS&quot;</span><span class="p">);</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="c1">// Change SomeClass to be the class you are currently in</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="c1">// The resource name needs to be prefixed with a /</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">    </span><span class="c1">// The password should be changeit, unless you are using a different password for your keystore (but you shouldn&#39;t)</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">    </span><span class="n">myKeyStore</span><span class="p">.</span><span class="na">load</span><span class="p">(</span><span class="n">SomeClass</span><span class="p">.</span><span class="na">class</span><span class="p">.</span><span class="na">getResourceAsStream</span><span class="p">(</span><span class="s">&quot;/mykeystore.jks&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;changeit&quot;</span><span class="p">.</span><span class="na">toCharArray</span><span class="p">());</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">    </span><span class="n">KeyManagerFactory</span><span class="w"> </span><span class="n">kmf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">KeyManagerFactory</span><span class="p">.</span><span class="na">getInstance</span><span class="p">(</span><span class="n">KeyManagerFactory</span><span class="p">.</span><span class="na">getDefaultAlgorithm</span><span class="p">());</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">    </span><span class="n">TrustManagerFactory</span><span class="w"> </span><span class="n">tmf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TrustManagerFactory</span><span class="p">.</span><span class="na">getInstance</span><span class="p">(</span><span class="n">TrustManagerFactory</span><span class="p">.</span><span class="na">getDefaultAlgorithm</span><span class="p">());</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">    </span><span class="n">kmf</span><span class="p">.</span><span class="na">init</span><span class="p">(</span><span class="n">myKeyStore</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">);</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">    </span><span class="n">tmf</span><span class="p">.</span><span class="na">init</span><span class="p">(</span><span class="n">myKeyStore</span><span class="p">);</span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">    </span><span class="n">ctx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SSLContext</span><span class="p">.</span><span class="na">getInstance</span><span class="p">(</span><span class="s">&quot;TLS&quot;</span><span class="p">);</span>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="w">    </span><span class="n">ctx</span><span class="p">.</span><span class="na">init</span><span class="p">(</span><span class="n">kmf</span><span class="p">.</span><span class="na">getKeyManagers</span><span class="p">(),</span><span class="w"> </span><span class="n">tmf</span><span class="p">.</span><span class="na">getTrustManagers</span><span class="p">(),</span><span class="w"> </span><span class="kc">null</span><span class="p">);</span>
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">KeyStoreException</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">NoSuchAlgorithmException</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">KeyManagementException</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">UnrecoverableKeyException</span><span class="w"> </span><span class="o">|</span>
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="w">                 </span><span class="n">IOException</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">CertificateException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="w">      </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Failed to load keystore. A lot of API requests won&#39;t work&quot;</span><span class="p">);</span>
+</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="w">      </span><span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+</span><span id="__span-7-19"><a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="w">      </span><span class="n">ctx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+</span><span id="__span-7-20"><a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-7-21"><a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>This should be done only once, and you can store this <code class="language-java highlight"><span class="n">SSLContext</span></code> in a static variable.</p>
+<p>Now, whenever you make an HTTPs request, you simply set the requests context to that SSL context:</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kd">static</span><span class="w"> </span><span class="n">SSLContext</span><span class="w"> </span><span class="n">ctx</span><span class="p">;</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="kd">static</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span><span class="c1">// That code from earlier</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="p">}</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">URLConnection</span><span class="w"> </span><span class="nf">openHTTPSConnection</span><span class="p">(</span><span class="n">URL</span><span class="w"> </span><span class="n">url</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">  </span><span class="n">URLConnection</span><span class="w"> </span><span class="n">connection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">url</span><span class="p">.</span><span class="na">openConnection</span><span class="p">();</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">connection</span><span class="w"> </span><span class="k">instanceof</span><span class="w"> </span><span class="n">HttpURLConnection</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">ctx</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">    </span><span class="p">((</span><span class="n">HttpURLConnection</span><span class="p">)</span><span class="w"> </span><span class="n">connection</span><span class="p">).</span><span class="na">setSSLSocketFactory</span><span class="p">(</span><span class="n">ctx</span><span class="p">.</span><span class="na">getSocketFactory</span><span class="p">());</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">connection</span><span class="p">;</span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="w">  </span><span class="c1">// Or you can return an input stream directly:</span>
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="w">  </span><span class="c1">// return connection.getInputStream();</span>
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>So with all this, how does our final HTTPS request look like:</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nd">@Override</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">processCommand</span><span class="p">(</span><span class="n">ICommandSender</span><span class="w"> </span><span class="n">sender</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">  </span><span class="n">Thread</span><span class="w"> </span><span class="n">thread</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Thread</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">      </span><span class="n">URL</span><span class="w"> </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">URL</span><span class="p">(</span><span class="s">&quot;https://some-leaderboard-api.nea.moe/getleaderboardposition?username=&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">);</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">      </span><span class="n">JsonObject</span><span class="w"> </span><span class="n">apiResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gson</span><span class="p">.</span><span class="na">fromJson</span><span class="p">(</span><span class="n">SSLUtil</span><span class="p">.</span><span class="na">openHTTPSConnection</span><span class="p">(</span><span class="n">url</span><span class="p">).</span><span class="na">getInputStream</span><span class="p">(),</span><span class="w"> </span><span class="n">JsonObject</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">      </span><span class="n">Minecraft</span><span class="p">.</span><span class="na">getMinecraft</span><span class="p">().</span><span class="na">addScheduledTask</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">        </span><span class="n">sender</span><span class="p">.</span><span class="na">addChatMessage</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ChatComponentText</span><span class="p">(</span><span class="s">&quot;§a&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; is rank #&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">apiResponse</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&quot;rank&quot;</span><span class="p">).</span><span class="na">getAsInt</span><span class="p">()));</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">      </span><span class="p">});</span>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">      </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">  </span><span class="p">});</span>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">  </span><span class="n">thread</span><span class="p">.</span><span class="na">start</span><span class="p">();</span>
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>There is still lots to improve here, and you will probably write your own utility methods to make this easier, but the basic structure will boil down to something roughly looking like this.</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 29, 2024</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 29, 2024</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.annotate", "content.code.copy", "content.tooltips", "navigation.top", "navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.tracking", "navigation.indexes", "content.action.edit", "search.suggest", "search.share"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dd8806f2.min.js"></script>
+      
+    
+  </body>
+</html>

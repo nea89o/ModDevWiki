@@ -210,7 +210,7 @@ Now how do we fix this?
 
 #### Avoiding the problem altogether
 
-There are two easy (almost code less) fixes. Use an older certificate authority that has been around for a while, or use a more modern Java version. Note that a lot of those older CAs may charge a fee, and even when using an old provider, there is no guarantee that they will give you a certificate signed with one of their older root CAs. Maybe you also want to access a website you don't have access to (like GitHub or the hypixel api). Also getting all your users to change the default minecraft java installation is a challenge so obvious, I hope I don't have to explain to anyone.
+There are two easy (almost code less) fixes. Use an older certificate authority that has been around for a while, or use a more modern Java version. Note that a lot of those older CAs may charge a fee, and even when using an old provider, there is no guarantee that they will give you a certificate signed with one of their older root CAs. Maybe you also want to access a website you don't have access to (like GitHub or the Hypixel API). Also getting all your users to change the default minecraft java installation is a challenge so obvious, I hope I don't have to explain to anyone.
 
 #### False hope
 

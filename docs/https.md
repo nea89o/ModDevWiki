@@ -198,7 +198,7 @@ sequenceDiagram
   My Server -->> My Mod: Here is an HTTP response.
 ```
 
-Obviously an evil root CA can still be a problem, but a lot of attacks can be prevented this way.
+Obviously an [evil root CA can still be a problem](https://certificate.transparency.dev/), but a lot of attacks can be prevented this way.
 
 ### Root CAs in Java
 
@@ -214,7 +214,7 @@ There are two easy (almost code less) fixes. Use an older certificate authority 
 
 #### False hope
 
-There are two ways that I see often used to fix this problem. Just using HTTP and disabling the CA trusting mechanism altogether. Both of them allow anyone to access all of the data that is being transmitted. For something simple as bazaar data that might be fine, but even if there is nothing private or secretive you need to be careful. If (for example) you are disabling HTTPS for your update checker, it is quite easy for a malicious actor to inject a fake update, making them download a potentially malicious binary that will be executed on the next startup.
+There are two ways that I see often used to fix this problem. Just using HTTP and disabling the CA trusting mechanism altogether. Both of them allow anyone to access all of the data that is being transmitted. For something simple such as bazaar data that might be fine, but even if there is nothing private or secretive you need to be careful. If (for example) you are disabling HTTPS for your update checker, it is quite easy for a malicious actor to inject a fake update, making them download a potentially malicious binary that will be executed on the next startup.
 
 In fact disabling HTTPS or the CA root mechanisms is considered so bad of a practice that all major browsers have a mechanism called [HSTS](https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security) which allows websites to prevent accessing them via HTTP.
 
@@ -225,7 +225,7 @@ I will call out some mods here that I know are doing this.
  - [Bazaar Notifier](https://github.com/symt/BazaarNotifier/blob/988b2728538c45aba6ca3f240c3c718b8608fd12/src/main/java/dev/meyi/bn/utilities/Utils.java#L43-L59)
  - and many more...
 
-The mods listed here only use them for minor requests, but some others out there use them for their updater notifications, potentially allowing attackers to run arbitrary code on their users computer. If you would like to add or remove from that list, feel free to [make an issue](https://github.com/nea89o/modDevWiki/issues/new?title=[SSL%20Violator%20List]).
+The mods listed here only use them for [non-confidential/non-integral](https://en.wikipedia.org/wiki/CIA_triad) requests, but some others out there use them for their updater notifications, potentially allowing attackers to run arbitrary code on their users computer or other dangerous things. If you would like to add or remove from that list, feel free to [make an issue](https://github.com/nea89o/modDevWiki/issues/new?title=[SSL%20Violator%20List]).
 
 Some mods go even further beyond and not only use those broken trust factories for their own mods request, but also set them as the global default, making the requests done by all other mods also be insecure.
 

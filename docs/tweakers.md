@@ -10,7 +10,7 @@ Note that I will talk about Tweakers for the most part here. `IFMLLoadingPlugin`
 
 ## Getting Started
 
-You probably have used a tweaker already. [Mixins](./mixins/) are loaded using a tweaker as well. You might not have realized since it is included in a bunch of templates already, but the tweaker system is exactly what allows mixin to modify all kinds of classes on your behalf.
+You probably have used a tweaker already. [Mixins](./mixins/index.md) are loaded using a tweaker as well. You might not have realized since it is included in a bunch of templates already, but the tweaker system is exactly what allows mixin to modify all kinds of classes on your behalf.
 
 Running [multiple tweakers](#delegating-tweakers) is usually a bit difficult, but while we are in a development environment we can just keep adding more `--tweakClass <className>` arguments. Those can be set in your loom settings in the `build.gradle.kts` file:
 

@@ -22,6 +22,7 @@ nav:
     - mixins/adding-fields.md
     - mixins/simple-injects.md
   - hotswap.md
+  - tweakers.md
   - https.md
 
 

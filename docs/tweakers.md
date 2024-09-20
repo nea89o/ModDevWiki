@@ -115,7 +115,7 @@ Let's go over some use cases of the blackboard.
 
 ### Delegating tweakers
 
-While you can have many tweakers in a devenv, loading multiple tweakers from a JAR is not possible. Instead you can load one tweaker which will then instruct the launch process to load a second tweaker. This is done via `Launch.(List<String>) blackboard.get("TweakClasses")`
+While you can have many tweakers in a devenv, loading multiple tweakers from a JAR is not possible. Instead you can load one tweaker which will then instruct the launch process to load a second tweaker. This is done via `(List<String>) Launch.blackboard.get("TweakClasses")`
 
 ```java
     @Override
@@ -129,7 +129,7 @@ This can be combined with new dependencies added via `addURL` to load tweakers f
 
 These types of tweakers are sometimes also called cascading tweakers.
 
-All loaded tweakers can be accessed via `:::java (List<ITweaker>) Launch.blackboard.get("Tweaks")`. This list can be useful sometimes, but should be considered read-only.
+If instead of tweaker class names, you want full on objects, you can use `:::java (List<ITweaker>) Launch.blackboard.get("Tweaks")`. This list is read only (while you can write elements into that list, doing so will not run any events on them).
 
 Another pit fall is when you can cascade new tweakers. You can only do so during `acceptOptions` and `injectIntoClassLoader`. At any other point in time the new tweakers can be either ignored or cause a crash.
 

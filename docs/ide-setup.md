@@ -31,6 +31,10 @@ If you want to contribute to an existing project, find that project on GitHub an
 
 ### Creating a new Project
 
+
+!!! warning
+    Unfortunately, [GitHub decided to delete my account](https://nea.moe/blog/github-suspension/). Because of that you will need to use the [zip generator](https://nea.moe/tools/processor/forge1.8.9/). Once you have downloaded and unzipped the folder you can continue as you usually would with this tutorial.
+
 Go to [Forge1.8.9Template](https://github.com/nea89o/Forge1.8.9Template/). Click on "Use this template" and "Create a new Repository". Find a good name for your mod. If you want to code your mod in Kotlin or make a 1.12 mod you will need to tick "Include all branches". Don't worry about it too much, you can change this later with a little bit of effort.
 
 !!! warning

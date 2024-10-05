@@ -66,8 +66,8 @@ This error indicates that your Java Version does not support architectury. Fix t
 
 This error indicates that your Java version is too new. Fix this by setting your gradle JDK to use exactly java version 17, not something newer like Java 21.
 
+### Error: Could not find or load main class `@C:\Some\Long\Path\1283814818228418813-argFile`
 
-
-
+This error (with the `@` at the beginning of the missing main class and then some random path) happens when IntelliJ (or another IDE) tries to use Java 9+ exclusive argument shorting. In Java 9 and later you can use `@<somePath>` to add arguments from a file. In Java 8 this will lead to errors, so you need to disable argfile shortening in your run configuration ("Shorten command line: none" in IntelliJ).
 
 

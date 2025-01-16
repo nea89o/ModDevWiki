@@ -221,7 +221,6 @@ In fact disabling HTTPS or the CA root mechanisms is considered so bad of a prac
 I will call out some mods here that I know are doing this.
 
  - [Partly Sane Skies](https://github.com/PartlySaneStudios/partly-sane-skies/blob/4d4eb0f30d52e74762439b2114f09c13af166819/src/main/kotlin/me/partlysanestudios/partlysaneskies/data/api/Request.kt#L116)
- - [Skyblock-Tweaks](https://github.com/MrFast-js/Skyblock-Tweaks/blob/0ff4f55a268a875645848958d07f910a480a5736/src/main/java/mrfast/sbt/utils/NetworkUtils.kt#L33)
  - [Bazaar Notifier](https://github.com/symt/BazaarNotifier/blob/988b2728538c45aba6ca3f240c3c718b8608fd12/src/main/java/dev/meyi/bn/utilities/Utils.java#L43-L59)
  - and many more...
 

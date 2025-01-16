@@ -82,6 +82,11 @@ Another common issue is to forget to register a mixin in the `mixins.modid.json`
 You can also get exceptions when trying to load a mixin class directly. Accessing any mixin class except for an accessor from non mixin code will crash your game. If you want to call a method inside a mixin, have that mixin implement an interface instead.
 
 
+## Other resources
+
+- [2xsaiko](https://dblsaiko.net/)'s [Mixin Cheatsheet](https://github.com/2xsaiko/mixin-cheatsheet/blob/master/README.md)
+
+
 
 
 

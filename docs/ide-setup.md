@@ -21,7 +21,7 @@ IntelliJ has a free community edition, as well as a paid ultimate edition, both 
 
 ## Setting up GitHub
 
-Although not strictly neccessary, it is recommended that you create a [GitHub](https://github.com) Account. This tutorial will assume you have one. If you do not have a GitHub Account you might need to find some more manual work arounds for some things.
+Although not strictly necessary, it is recommended that you create a [GitHub](https://github.com) Account. This tutorial will assume you have one. If you do not have a GitHub Account you might need to find some more manual work arounds for some things.
 
 ## Deciding on a Project
 
@@ -31,16 +31,15 @@ If you want to contribute to an existing project, find that project on GitHub an
 
 ### Creating a new Project
 
-
-!!! warning
-    Unfortunately, [GitHub decided to delete my account](https://nea.moe/blog/github-suspension/). Because of that you will need to use the [zip generator](https://nea.moe/tools/processor/forge1.8.9/). Once you have downloaded and unzipped the folder you can continue as you usually would with this tutorial.
-
 Go to [Forge1.8.9Template](https://github.com/nea89o/Forge1.8.9Template/). Click on "Use this template" and "Create a new Repository". Find a good name for your mod. If you want to code your mod in Kotlin or make a 1.12 mod you will need to tick "Include all branches". Don't worry about it too much, you can change this later with a little bit of effort.
 
 !!! warning
     Do not clone the template repository directly (or download a zip of the template repository). When using the "Use this template" option on GitHub, there is some additional processing being done to insure your repository is fully set up.
 
     If you *must* you can also manually use the `make-my-own.sh` script, but only on Linux, and there are no guarantees for it to work.
+
+!!! info
+    In the past [GitHub decided to temporarily delete my account](https://nea.moe/blog/github-suspension). I have since been unbanned, but if you want, you can still use the [zip generator](https://nea.moe/tools/processor/forge1.8.9) that works without using GitHub. Once you have downloaded and unzipped the folder you can continue as you usually would with this tutorial.
 
 ## Setting up your IDE
 
